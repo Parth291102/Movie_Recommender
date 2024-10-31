@@ -10,7 +10,7 @@ import csv
 import re
 import time
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 
 sys.path.append("../../")
@@ -67,11 +67,12 @@ class Recommendation(db.Model):
     frequency = db.Column(db.Integer, default=1)  # New column to track occurrences
 
     def __repr__(self):
-        return f'<Recommendation {self.movie_title} - Count: {self.frequency}>'
+        return f'<Recommendation: {self.movie_title} - Count: {self.frequency}>'
 
 # Function to send personalized email
 def send_recommendation_email(user):
-    recommendations = Recommendation.query.filter_by(user_id=user.id).order_by(Recommendation.recommended_on.desc()).limit(5).all()
+    last_week = datetime.now() - timedelta(days=7)
+    recommendations = Recommendation.query.filter_by(user_id=user.id).filter(Recommendation.recommended_on >= last_week).all()
     if recommendations:
         recommended_movies = [r.movie_title for r in recommendations]
         movie_list = "\n".join(recommended_movies)
@@ -166,6 +167,9 @@ def predict():
 
     # Clean the movie titles by removing the year if present
     cleaned_movie_list = [re.sub(r"\s\(\d{4}\)$", "", movie) for movie in movie_list]
+
+    last_week = datetime.now() - timedelta(days=7)
+    print(Recommendation.query.filter_by(user_id=current_user.id).filter(Recommendation.recommended_on >= last_week).all())
 
     # Get recommendations based on plot similarity using cleaned titles
     recommendations = get_recommendations(cleaned_movie_list)
