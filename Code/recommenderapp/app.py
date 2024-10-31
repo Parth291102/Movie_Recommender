@@ -225,14 +225,16 @@ def search():
 
 @app.route("/feedback", methods=["POST"])
 def feedback():
+    print("In Feedback")
     data = json.loads(request.data)
+    print(data)
     user_id = current_user.id  # Assuming user is authenticated, retrieve their ID
     
     for movie_title, feedback_type in data.items():
         feedback_entry = Recommendation(
             user_id=user_id,
             movie_title=movie_title,
-            feedback=feedback_type
+            review=feedback_type
         )
         db.session.add(feedback_entry)
     
