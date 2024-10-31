@@ -54,11 +54,12 @@ def recommendForNewUser(user_rating):
     userProfile = userGenre.T.dot(userRatings.rating.to_numpy())
     moviesGenreFilled.set_index(moviesGenreFilled.movieId)
     moviesGenreFilled.drop(["movieId", "title", "genres"], axis=1, inplace=True)
-
+    
     recommendations = (moviesGenreFilled.dot(userProfile)) / userProfile.sum()
     joinMoviesAndRecommendations = movies.copy(deep=True)
     joinMoviesAndRecommendations["recommended"] = recommendations
     joinMoviesAndRecommendations.sort_values(
         by="recommended", ascending=False, inplace=True
     )
+
     return [x for x in joinMoviesAndRecommendations["title"]][:201]
