@@ -47,10 +47,15 @@ class Recommendation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     movie_title = db.Column(db.String(200), nullable=False)
+    review = db.Column(db.String(50))  # New column for review (like, dislike, etc.)
     recommended_on = db.Column(db.DateTime, default=datetime.utcnow)
 
-    def __repr__(self):
-        return f'<Recommendation {self.movie_title}>'
+class TopMovies(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    movie_title = db.Column(db.String(200), nullable=False)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
 
 
 # Replace 'YOUR_API_KEY' with your actual OMDB API key
@@ -119,7 +124,6 @@ def logout():
     return redirect(url_for('landing_page'))
 
 
-
 @app.route("/predict", methods=["POST"])
 # def predict():
 #     data = json.loads(request.data)  # contains movies
@@ -157,13 +161,43 @@ def predict():
             movie_with_rating[movie+"-g"]=movie_info['Genre']
             movie_with_rating[movie+"-p"]=movie_info['Poster']
         
-        new_recommendation = Recommendation(user_id=current_user.id, movie_title=movie)
+        new_recommendation = Recommendation(user_id=current_user.id, movie_title=movie, review="yet to watch")
         db.session.add(new_recommendation)
     
     db.session.commit()
 
-    resp = {"recommendations": recommendations, "rating":movie_with_rating}
+    resp = {"recommendations": recommendations, "rating":movie_with_rating, "review": "yet to watch"}
     return resp
+
+# @app.route("/predict", methods=["POST"])
+# @login_required
+# def predict():
+#     data = json.loads(request.data)  # contains movies
+#     liked_movies = Recommendation.query.filter_by(user_id=current_user.id, review="like").all()
+#     liked_movie_titles = [movie.movie_title for movie in liked_movies]
+
+#     training_data = [{"title": title, "rating": 5.0} for title in liked_movie_titles]
+#     recommendations = recommendForNewUser(training_data)[:10]
+
+#     # Store recommendations with movie info
+#     movie_with_rating = {}
+#     for movie in recommendations:
+#         movie_info = get_movie_info(movie)
+#         if movie_info:
+#             movie_with_rating[movie+"-r"] = movie_info['imdbRating']
+#             movie_with_rating[movie+"-g"] = movie_info['Genre']
+#             movie_with_rating[movie+"-p"] = movie_info['Poster']
+        
+#         # Add to Recommendation table with default 'yet to watch' review
+#         new_recommendation = Recommendation(user_id=current_user.id, movie_title=movie, review="yet to watch")
+#         db.session.add(new_recommendation)
+
+#     # Commit new recommendations
+#     db.session.commit()
+
+#     resp = {"recommendations": recommendations, "rating": movie_with_rating}
+#     return resp
+
 
 @app.route("/history")
 @login_required
@@ -181,19 +215,56 @@ def search():
     resp.status_code = 200
     return resp
 
+# @app.route("/feedback", methods=["POST"])
+# def feedback():
+#     data = json.loads(request.data)
+#     with open(f"experiment_results/feedback_{int(time.time())}.csv", "w") as f:
+#         for key in data.keys():
+#             f.write(f"{key} - {data[key]}\n")
+#     return data
+
 @app.route("/feedback", methods=["POST"])
 def feedback():
     data = json.loads(request.data)
-    with open(f"experiment_results/feedback_{int(time.time())}.csv", "w") as f:
-        for key in data.keys():
-            f.write(f"{key} - {data[key]}\n")
-    return data
+    user_id = current_user.id  # Assuming user is authenticated, retrieve their ID
+    
+    for movie_title, feedback_type in data.items():
+        feedback_entry = Recommendation(
+            user_id=user_id,
+            movie_title=movie_title,
+            feedback=feedback_type
+        )
+        db.session.add(feedback_entry)
+    
+    db.session.commit()  # Commit all feedback entries at once
+    return jsonify({"status": "success", "message": "Feedback saved successfully"})
+
 
 @app.route("/success")
 def success():
     return render_template("success.html")
 
+@app.route("/generate_top_movies", methods=["POST"])
+@login_required
+def generate_top_movies():
+    liked_movies = Recommendation.query.filter_by(user_id=current_user.id, review="like").all()
+    liked_movie_titles = [movie.movie_title for movie in liked_movies]
+
+    training_data = [{"title": title, "rating": 5.0} for title in liked_movie_titles]
+    top_movies = recommendForNewUser(training_data)[:10]
+
+    # Store top 10 movies in TopMovies table
+    for movie in top_movies:
+        top_movie_entry = TopMovies(user_id=current_user.id, movie_title=movie)
+        db.session.add(top_movie_entry)
+
+    db.session.commit()
+    return jsonify({"top_movies": top_movies})
+
+
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
     app.run(port=5000, debug=True)
+
+
