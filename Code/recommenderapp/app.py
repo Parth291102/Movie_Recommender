@@ -7,6 +7,7 @@ from flask_mail import Mail, Message
 import json
 import sys
 import csv
+import re
 import time
 import requests
 from datetime import datetime
@@ -15,6 +16,8 @@ from apscheduler.schedulers.background import BackgroundScheduler
 sys.path.append("../../")
 from Code.prediction_scripts.item_based import recommendForNewUser
 from search import Search
+from Code.text_based_approach.plot_based_recommendation import get_recommendations
+
 
 app = Flask(__name__)
 app.secret_key = "secret key"
@@ -69,15 +72,6 @@ class User(UserMixin, db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
     
-# class Recommendation(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-#     movie_title = db.Column(db.String(200), nullable=False)
-#     recommended_on = db.Column(db.Date, default=datetime.now().date())
-
-#     def __repr__(self):
-#         return f'<Recommendation {self.movie_title}>'
-
 class Recommendation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -111,7 +105,7 @@ scheduler.add_job(func=weekly_recommendation_emails, trigger="interval", days=7)
 OMDB_API_KEY = 'f77aeb1e'
 
 def get_movie_info(title):
-    index = len(title) - 6
+    index = len(title)
     url = f"http://www.omdbapi.com/?t={title[0:index]}&apikey={OMDB_API_KEY}"
     response = requests.get(url)
     if response.status_code == 200:
@@ -126,28 +120,6 @@ def get_movie_info(title):
 @app.route("/")
 def landing_page():
     return render_template("landing_page.html")
-
-@app.route('/register', methods=['GET', 'POST'])
-# def register():
-#     if current_user.is_authenticated:
-#         return redirect(url_for('landing_page'))
-#     if request.method == 'POST':
-#         username = request.form.get('username')
-#         password = request.form.get('password')
-#         email = request.form.get('email')
-#         email_notifications = 'email_notifications' in request.form  # Checkbox handling
-
-#         if User.query.filter_by(username=username).first() or User.query.filter_by(email=email).first():
-#             flash("Username or Email already exists!")
-#             return redirect(url_for('register'))
-
-#         user = User(username=username, email=email, email_notifications=email_notifications)
-#         user.set_password(password)
-#         db.session.add(user)
-#         db.session.commit()
-
-#         return redirect(url_for('landing_page'))
-#     return render_template('register.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -199,43 +171,20 @@ def logout():
     logout_user()
     return redirect(url_for('landing_page'))
 
-# @app.route("/predict", methods=["POST"])
-# def predict():
-#     data = json.loads(request.data)  # contains movies
-#     data1 = data["movie_list"]
-#     training_data = []
-#     for movie in data1:
-#         movie_with_rating = {"title": movie, "rating": 5.0}
-#         training_data.append(movie_with_rating)
-#     recommendations = recommendForNewUser(training_data)
-#     recommendations = recommendations[:10]
-
-#     for movie in recommendations:
-#         movie_info = get_movie_info(movie)
-#         if movie_info:
-#             movie_with_rating[movie+"-r"] = movie_info['imdbRating']
-#             movie_with_rating[movie+"-g"] = movie_info['Genre']
-#             movie_with_rating[movie+"-p"] = movie_info['Poster']
-
-#         new_recommendation = Recommendation(user_id=current_user.id, movie_title=movie)
-#         db.session.add(new_recommendation)
-
-#     db.session.commit()
-
-#     resp = {"recommendations": recommendations, "rating": movie_with_rating}
-#     return resp
 
 @app.route("/predict", methods=["POST"])
 def predict():
     data = json.loads(request.data)  # contains movies
-    data1 = data["movie_list"]
-    training_data = []
-    for movie in data1:
-        movie_with_rating = {"title": movie, "rating": 5.0}
-        training_data.append(movie_with_rating)
-    recommendations = recommendForNewUser(training_data)
-    recommendations = recommendations[:10]
+    movie_list = data.get("movie_list", [])
 
+    # Clean the movie titles by removing the year if present
+    cleaned_movie_list = [re.sub(r"\s\(\d{4}\)$", "", movie) for movie in movie_list]
+
+    # Get recommendations based on plot similarity using cleaned titles
+    recommendations = get_recommendations(cleaned_movie_list)
+
+    # Prepare additional movie details for the response
+    movie_with_rating = {}
     for movie in recommendations:
         movie_info = get_movie_info(movie)
         if movie_info:
@@ -263,8 +212,50 @@ def predict():
 
     db.session.commit()
 
+    # Return recommendations with additional movie information
     resp = {"recommendations": recommendations, "rating": movie_with_rating}
-    return resp
+    return jsonify(resp)
+
+# @app.route("/predict", methods=["POST"])
+# def predict():
+#     data = json.loads(request.data)  # contains movies
+#     data1 = data["movie_list"]
+#     training_data = []
+#     for movie in data1:
+#         movie_with_rating = {"title": movie, "rating": 5.0}
+#         training_data.append(movie_with_rating)
+#     recommendations = recommendForNewUser(training_data)
+#     recommendations = recommendations[:10]
+
+#     for movie in recommendations:
+#         movie_info = get_movie_info(movie)
+#         if movie_info:
+#             movie_with_rating[movie + "-r"] = movie_info['imdbRating']
+#             movie_with_rating[movie + "-g"] = movie_info['Genre']
+#             movie_with_rating[movie + "-p"] = movie_info['Poster']
+
+#         # Check for existing recommendation by movie title and user
+#         existing_recommendation = Recommendation.query.filter_by(
+#             user_id=current_user.id, movie_title=movie
+#         ).first()
+
+#         if existing_recommendation:
+#             # Update existing recommendation
+#             existing_recommendation.recommended_on = datetime.now().date()
+#             existing_recommendation.frequency += 1
+#         else:
+#             # Add new recommendation
+#             new_recommendation = Recommendation(
+#                 user_id=current_user.id,
+#                 movie_title=movie,
+#                 frequency=1
+#             )
+#             db.session.add(new_recommendation)
+
+#     db.session.commit()
+
+#     resp = {"recommendations": recommendations, "rating": movie_with_rating}
+#     return resp
 
 @app.route("/history")
 @login_required
