@@ -2,61 +2,99 @@
 <html>
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap">
     <style>
         body {
-        position: relative;
-        background: url("https://wallpaperaccess.com/full/8212583.jpg") no-repeat center center fixed;
-        background-size: 170%; /* Zoom in the background */
-    }
-
-    body::before {
-        content: "";
-        position: absolute;
-        background: url("https://wallpaperaccess.com/full/8212583.jpg");
-        opacity: 0.5;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
-        z-index: -1;
-    }
-
-    .form-container {
-        position: relative;
-        z-index: 1;
-        margin: 50px auto; /* Center the form on the page */
-        width: 300px; /* Adjust width as per your design */
-        padding: 20px;
-        background-color: rgba(255, 255, 255, 0.8); /* Optional: for better visibility */
-        border-radius: 8px;
-    }
-
-    /* Style inputs and buttons */
-    .form-container input,
-    .form-container .red-button {
-        width: 100%; /* Full width */
-        margin-bottom: 10px; /* Spacing between elements */
-    }
-
-        .red-button {
-            background-color: #d9534f;
+            position: relative;
+            background: url("https://wallpaperaccess.com/full/8212583.jpg") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Noto Sans', sans-serif;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.75); /* Dark overlay for better readability */
+            z-index: -1;
+        }
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        .form-container h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #e50914;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            font-size: 16px;
+        }
+        .form-container input[type="text"]::placeholder,
+        .form-container input[type="password"]::placeholder {
+            color: #aaa;
+        }
+        .form-container .red-button {
+            background-color: #e50914;
             color: white;
             border: none;
-            padding: 10px 20px;
-            text-decoration: none;
+            padding: 15px;
             font-size: 18px;
+            font-weight: 700;
+            border-radius: 5px;
             cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+        .form-container .red-button:hover {
+            background-color: #b20710;
+        }
+        .form-container p {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .form-container p a {
+            color: #e50914;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .form-container p a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <div class="form-container">
+        <h2>Login</h2>
         <form action="/login" method="post">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit" class="red-button">Login</button>
         </form>
+        <p>Don't have an account? <a href="/register">Register</a></p>
     </div>
 </body>
 </html>
