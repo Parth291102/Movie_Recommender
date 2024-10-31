@@ -14,7 +14,7 @@ from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
 
 sys.path.append("../../")
-# from Code.prediction_scripts.item_based import recommendForNewUser
+from Code.prediction_scripts.item_based import recommendForNewUser
 from Code.recommenderapp.search import Search
 from Code.text_based_approach.plot_based_recommendation import get_recommendations
 
