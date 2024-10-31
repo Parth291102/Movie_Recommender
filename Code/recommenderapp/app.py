@@ -58,7 +58,7 @@ class User(UserMixin, db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-    
+
 class Recommendation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
@@ -161,7 +161,6 @@ def login():
 
     return render_template('login.html', error=error)
 
-
 @app.route('/logout')
 @login_required
 def logout():
@@ -251,12 +250,10 @@ def history():
 
 @app.route("/search", methods=["POST"])
 def search():
-    term = request.form["q"]
+    term = request.form.get("q", "")
     search = Search()
     filtered_dict = search.resultsTop10(term)
-    resp = jsonify(filtered_dict)
-    resp.status_code = 200
-    return resp
+    return jsonify(filtered_dict)
 
 # @app.route("/feedback", methods=["POST"])
 # def feedback():
