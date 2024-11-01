@@ -1,18 +1,17 @@
 import pandas as pd
-
-# from app import app
-from flask import jsonify, request, render_template
-import sys
 import os
-
-app_dir = os.path.dirname(os.path.abspath(__file__))
-code_dir = os.path.dirname(app_dir)
-project_dir = os.path.dirname(code_dir)
-
+import sys
+sys.path.append("../../")
 
 class Search:
 
-    df = pd.read_csv(project_dir + "/data/movies.csv")
+    # Update the path to movies_metadata.csv and use 'original_title' column
+    app_dir = os.path.dirname(os.path.abspath(__file__))
+    code_dir = os.path.dirname(app_dir)
+    project_dir = os.path.dirname(code_dir)
+
+    # Load the updated dataset and specify 'original_title' as the column to use
+    df = pd.read_csv(project_dir + "/Code/text_based_approach/movies_metadata.csv", low_memory=False)
 
     def __init__(self):
         pass
@@ -21,8 +20,9 @@ class Search:
         n = len(word)
         res = []
         word = word.lower()
-        for x in self.df["title"]:
-            curr = x.lower()
+        # Use 'original_title' instead of 'title'
+        for x in self.df["original_title"]:
+            curr = str(x).lower()  # Convert to string to avoid issues with missing values
             if curr[:n] == word:
                 res.append(x)
         return res
@@ -30,9 +30,10 @@ class Search:
     def anywhere(self, word, visitedWords):
         res = []
         word = word.lower()
-        for x in self.df["title"]:
+        # Use 'original_title' instead of 'title'
+        for x in self.df["original_title"]:
             if x not in visitedWords:
-                curr = x.lower()
+                curr = str(x).lower()  # Convert to string to avoid issues with missing values
                 if word in curr:
                     res.append(x)
         return res
@@ -48,7 +49,3 @@ class Search:
 
     def resultsTop10(self, word):
         return self.results(word)[:10]
-
-
-if __name__ == "__main__":
-    app.run()
