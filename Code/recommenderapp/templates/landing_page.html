@@ -444,11 +444,14 @@
             $('#predictedMovies .card').each(function(){
                 var movieTitle = $(this).find('.card-title').text().trim(); // Get movie title
                 var feedbackValue = $(this).find('input[type="radio"]:checked').val(); // Get selected feedback
-
+                var labels = {
+                    1: 'Dislike',
+                    2: 'Yet to watch',
+                    3: 'Like'
+                };
                 // Only include movies with selected feedback
                 if (feedbackValue) {
-
-                    feedbackData[movieTitle] = feedbackValue;
+                    feedbackData[movieTitle] = labels[feedbackValue];
                 }
             });
 
