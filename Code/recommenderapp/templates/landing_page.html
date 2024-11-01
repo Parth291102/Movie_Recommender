@@ -438,40 +438,44 @@
             }
     
             $('#feedback').click(function(){
-                var myForm = $('fieldset');
-                var data = {};
+            var feedbackData = {};
+
+            // Iterate over each predicted movie card
+            $('#predictedMovies .card').each(function(){
+                var movieTitle = $(this).find('.card-title').text().trim(); // Get movie title
+                var feedbackValue = $(this).find('input[type="radio"]:checked').val(); // Get selected feedback
                 var labels = {
                     1: 'Dislike',
                     2: 'Yet to watch',
                     3: 'Like'
                 };
-                for(var i=0;i<myForm.length;i++){
-                    var input = $('#'+i).find('div').find('input:checked')[0].value;
-                    var movieName = $('#'+i).find('div').find('li')[0].innerText;
-                    data[movieName]=labels[input];
+                // Only include movies with selected feedback
+                if (feedbackValue) {
+                    feedbackData[movieTitle] = labels[feedbackValue];
                 }
-                console.log(data);
-    
+            });
+
+            // Check if feedbackData has entries before sending
+            if (Object.keys(feedbackData).length > 0) {
                 $.ajax({
                     type: "POST",
                     url: "/feedback",
                     dataType: "json",
                     contentType: "application/json;charset=UTF-8",
-                    traditional: "true",
-                    cache: false,
-                    data: JSON.stringify(data),
+                    data: JSON.stringify(feedbackData),
                     success: function (response) {
-                        // console.log("->", response);
-                        // $("#dataCollected").css("display", "block");
-                        window.location.href="/success";
+                        window.location.href = "/success";
                     },
                     error: function (error) {
-                        console.log("ERROR ->" + error );
-                        displayErrorMessage("Please fill in all the fields");
+                        console.error("Error:", error);
+                        displayErrorMessage("Please ensure all fields are filled.");
                     }
                 });
-    
-            });
+            } else {
+                displayErrorMessage("Please select feedback for each movie.");
+            }
+        });
+
     
     
         });
