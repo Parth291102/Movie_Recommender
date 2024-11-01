@@ -3,7 +3,7 @@ import warnings
 import sys
 import os
 
-sys.path.append("../")
+sys.path.append(os.path.abspath("../"))
 from Code.recommenderapp.search import Search
 
 warnings.filterwarnings("ignore")
