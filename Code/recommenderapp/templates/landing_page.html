@@ -35,7 +35,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7); /* Dark overlay */
+            background: rgba(0, 0, 0, 0.7);
             z-index: -1;
         }
 
@@ -88,7 +88,7 @@
         /* Card Style */
         .card {
             width: 350px;
-            background-color: rgba(34, 34, 34, 0.9); /* Semi-transparent background */
+            background-color: rgba(34, 34, 34, 0.9);
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
@@ -117,9 +117,28 @@
             background-color: #f0f0f0;
         }
 
-        .scrollable-card-container{
-            height: 25%; 
-            overflow-y: scroll;
+        .scrollable-card-container {
+            height: 450px;
+            overflow-y: auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .movie-card {
+            width: 45%;
+            background-color: #222;
+            padding: 10px;
+            border-radius: 8px;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .movie-card img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
         }
 
         .btn-custom {
@@ -140,7 +159,6 @@
             background-color: #f81f1f;
         }
 
-        /* Styling the container for symmetry */
         .cards-container {
             display: flex;
             flex-wrap: wrap;
@@ -148,7 +166,6 @@
             gap: 20px;
         }
 
-        /* Popup Error Message */
         .error-card {
             display: none;
             position: fixed;
@@ -167,10 +184,8 @@
 </head>
 
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="navbar-brand">Movie Recommendations</div>
-        <!-- Auth Buttons -->
         <div class="auth-buttons">
             {% if current_user.is_authenticated %}
                 <a href="{{ url_for('history') }}">View History</a>
@@ -182,10 +197,8 @@
         </div>
     </nav>
 
-    <!-- Main Container -->
     <div class="main-container">
         <div class="cards-container">
-            <!-- Movie Selection Card -->
             <div class="card">
                 <h2>Select Movies for Training</h2>
                 <input type="text" name="search" id="searchBox" placeholder="Type to search...">
@@ -193,8 +206,7 @@
                 <button id="predict" class="btn-custom">Predict Recommendations</button>
             </div>
 
-            <!-- Predicted Movies Card -->
-            <div class="card">
+            <div class="card" style="width: 500px;">
                 <h2>Predicted Movies</h2>
                 <div id="predictedMovies" class="scrollable-card-container"></div>
                 <button id="feedback" class="btn-custom">Give Feedback</button>
@@ -202,7 +214,6 @@
         </div>
     </div>
 
-    <!-- Error Message Popup -->
     <div id="errorMessage" class="error-card">
         <div>
             <h3>Error!</h3>
@@ -210,260 +221,261 @@
         </div>
     </div>
 
-    <!-- JavaScript for Interactive Features -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" crossorigin="anonymous"></script>
-<script>
-    var apiKey = 'AIzaSyBkk7lYRb1WZCB1QmEu5t_GzF0crk2cd3I';
-    gapi.load('client', initYouTubeAPI);
-    function initYouTubeAPI() {
-        gapi.client.init({
-            apiKey: apiKey,
-            discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest"],
-        }).then(function () {
-            console.log('YouTube API initialized');
-        });
-    }
-</script>
-<script>
-
-    $(document).ready(function () {
-        function displayErrorMessage(message) {
-            $('#errorMessageText').text(message);
-            $('#errorMessage').show(); // Show the error card
-            $('#main').css('opacity', '0.1');
-        }
-
-        $(function () {
-            $("#searchBox").autocomplete({
-                source: function (request, response) {
-                    $.ajax({
-                        type: "POST",
-                        url: "/search",
-                        dataType: "json",
-                        cache: false,
-                        data: {
-                            q: request.term
-                        },
-                        success: function (data) {
-                            //alert(data);
-                            // console.log(data);
-                            response(data);
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            console.log(textStatus + " " + errorThrown);
-                        }
-                    });
-                },
-                select: function (event, ui) {
-                    var ulList = $('#selectedMovies');
-                    var li = $('<li/>').text(ui.item.value).appendTo(ulList);
-                    var removeButton = $('<button/>', {
-        text: 'Remove',
-        css: {
-            backgroundColor: 'red',
-            color: 'white',
-            border: 'none',
-            padding: '5px 10px',
-            margin: '5px',
-            borderRadius: '5px',
-            cursor: 'pointer'
-        },
-        click: function () { $(this).parent().remove(); }
-    }).appendTo(li);
-                    $('#searchBox').val("");
-                    return false;
-                },
-                minLength: 2
-            });
-        });
-
-        $("#predict").click( function(){
-            var movie_list = []
-
-            $('#selectedMovies li').each( function () {
-                var movieTitle = $(this).text().split('Remove')[0].trim();
-                movie_list.push(movieTitle);
-            });
-
-            var movies = {"movie_list": movie_list};
-
-            $.ajax({
-                type: "POST",
-                url: "/predict",
-                dataType: "json",
-                contentType: "application/json;charset=UTF-8",
-                traditional: "true",
-                cache: false,
-                data: JSON.stringify(movies),
-                success: function (response) {
-                    var ulList = $('#predictedMovies');
-                    var i = 0;
-                    response['recommendations'].forEach(element => {
-                        // var diventry = $('<div/>');
-                        // var fieldset = $('<fieldset/>', {id:i}).css("border",'0');
-                        // var poster = $('<img>').attr('src', imageSrc);                        var li = $('<li/>').text(element);
-                        // var imdbRating = $('<li>').text("imdb: " + response['rating'][element+"-r"]);
-                        // var genre=$('<p/>').text("Genre: " + response['rating'][element+"-g"]);
-                        // var radios = $("<label class='radio-inline'><input type='radio' name="+i+" value=1>Dislike</label> \
-                        // <label class='radio-inline'><input type='radio' name="+i+" value=2>Yet to watch</label> \
-                        // <label class='radio-inline'><input type='radio' name="+i+" value=3>Like</label><br/><br/>");
-                        // diventry.append(li);
-                        // diventry.append(imdbRating);
-                        // diventry.append(genre);
-                        // diventry.append(radios);
-                        // fieldset.append(diventry);
-                        // ulList.append(fieldset);
-                        var card = document.createElement('div');
-                        card.className = 'card';
-                        card.style.margin='2.5%'
-                        card.style.width = '45%';
-                        card.style.padding = '5%';
-
-                        var image = document.createElement('img');
-                        image.src = response['rating'][element+"-p"];
-                        image.alt = 'Movie Poster';
-                        image.style.width='100%';
-                        card.appendChild(image);
-
-                        var cardBody = document.createElement('div');
-                        cardBody.className = 'card-body';
-
-                        var title = document.createElement('h3');
-                        title.className = 'card-title';
-                        title.textContent = element;
-
-                        var imdbRating = document.createElement('h5');
-                        imdbRating.className = 'card-text';
-                        imdbRating.textContent = 'imdb: ' + response['rating'][element + "-r"];
-
-                        var genre = document.createElement('h5');
-                        genre.className = 'card-text';
-                        genre.textContent = 'Genre: ' + response['rating'][element + "-g"];
-
-                        var radioButtons = document.createElement('div');
-                        radioButtons.className = 'radio-buttons';
-
-                        var QuestionLabel = document.createElement('label');
-                        QuestionLabel.className = 'radio-inline';
-                        QuestionLabel.innerHTML = '<h4>Give Feedback:';
-
-                        var dislikeLabel = document.createElement('label');
-                        dislikeLabel.className = 'radio-inline';
-                        dislikeLabel.innerHTML = '<input type="radio" name="i' + element + '" value="1"> Dislike';
-
-                        var yetToWatchLabel = document.createElement('label');
-                        yetToWatchLabel.className = 'radio-inline';
-                        yetToWatchLabel.innerHTML = '<input type="radio" name="i' + element + '" value="2"> Yet to watch';
-
-                        var likeLabel = document.createElement('label');
-                        likeLabel.className = 'radio-inline';
-                        likeLabel.innerHTML = '<input type="radio" name="i' + element + '" value="3"> Like';
-                        
-                        radioButtons.appendChild(QuestionLabel);
-                        radioButtons.appendChild(dislikeLabel);
-                        radioButtons.appendChild(yetToWatchLabel);
-                        radioButtons.appendChild(likeLabel);
-
-                        cardBody.appendChild(title);
-                        cardBody.appendChild(imdbRating);
-                        cardBody.appendChild(genre);
-                        cardBody.appendChild(radioButtons);
-
-                        fetchYouTubeVideoLinks(element, cardBody);
-
-                        card.appendChild(cardBody);
-                        document.getElementById('predictedMovies').appendChild(card);
-                        return card;
-                        i+=1;
-                    });
-
-                    // var li = $('<li/>').text()
-                    console.log("->", response['recommendations']);
-                },
-                error: function (error) {
-                    console.log("ERROR ->" + error );
-                    displayErrorMessage("Error in fetching recommendations");
-
-                }
-            });
-        });
-        function fetchYouTubeVideoLinks(movieTitle, cardBody) {
-
-            var request = gapi.client.youtube.search.list({
-                q: movieTitle + ' official trailer',
-                part: 'snippet',
-                type: 'video',
-                maxResults: 1,
-            });
-
-            request.execute(function (response) {
-                var videos = response.items;
-
-                if (videos.length > 0) {
-                    var trailersHeading = document.createElement('h5');
-                    //trailersHeading.textContent = 'Trailers:';
-                    cardBody.appendChild(trailersHeading);
-
-                    var trailersList = document.createElement('ul');
-
-                    videos.forEach(function (video) {
-                        var videoId = video.id.videoId;
-                        var videoLink = 'https://www.youtube.com/watch?v=' + videoId;
-
-
-                        var trailerItem = document.createElement('li');
-                        var youtubeLink = document.createElement('a');
-                        youtubeLink.href = videoLink;
-                        youtubeLink.target = '_blank';
-                        youtubeLink.textContent = 'Watch Trailer ';
-
-                        trailerItem.appendChild(youtubeLink);
-                        trailersList.appendChild(trailerItem);
-                    });
-
-                    cardBody.appendChild(trailersList);
-                }
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" crossorigin="anonymous"></script>
+    <script>
+        var apiKey = 'AIzaSyBkk7lYRb1WZCB1QmEu5t_GzF0crk2cd3I';
+        gapi.load('client', initYouTubeAPI);
+        function initYouTubeAPI() {
+            gapi.client.init({
+                apiKey: apiKey,
+                discoveryDocs: ["https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest"],
+            }).then(function () {
+                console.log('YouTube API initialized');
             });
         }
-
-        $('#feedback').click(function(){
-            var myForm = $('fieldset');
-            var data = {};
-            var labels = {
-                1: 'Dislike',
-                2: 'Yet to watch',
-                3: 'Like'
-            };
-            for(var i=0;i<myForm.length;i++){
-                var input = $('#'+i).find('div').find('input:checked')[0].value;
-                var movieName = $('#'+i).find('div').find('li')[0].innerText;
-                data[movieName]=labels[input];
+    </script>
+    <script>
+    
+        $(document).ready(function () {
+            function displayErrorMessage(message) {
+                $('#errorMessageText').text(message);
+                $('#errorMessage').show(); // Show the error card
+                $('#main').css('opacity', '0.1');
             }
-            console.log(data);
-
-            $.ajax({
-                type: "POST",
-                url: "/feedback",
-                dataType: "json",
-                contentType: "application/json;charset=UTF-8",
-                traditional: "true",
-                cache: false,
-                data: JSON.stringify(data),
-                success: function (response) {
-                    // console.log("->", response);
-                    // $("#dataCollected").css("display", "block");
-                    window.location.href="/success";
-                },
-                error: function (error) {
-                    console.log("ERROR ->" + error );
-                    displayErrorMessage("Please fill in all the fields");
-                }
+    
+            $(function () {
+                $("#searchBox").autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            type: "POST",
+                            url: "/search",
+                            dataType: "json",
+                            cache: false,
+                            data: {
+                                q: request.term
+                            },
+                            success: function (data) {
+                                //alert(data);
+                                // console.log(data);
+                                response(data);
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                console.log(textStatus + " " + errorThrown);
+                            }
+                        });
+                    },
+                    select: function (event, ui) {
+                        var ulList = $('#selectedMovies');
+                        var li = $('<li/>').text(ui.item.value).appendTo(ulList);
+                        var removeButton = $('<button/>', {
+            text: 'Remove',
+            css: {
+                backgroundColor: 'red',
+                color: 'white',
+                border: 'none',
+                padding: '5px 10px',
+                margin: '5px',
+                borderRadius: '5px',
+                cursor: 'pointer'
+            },
+            click: function () { $(this).parent().remove(); }
+        }).appendTo(li);
+                        $('#searchBox').val("");
+                        return false;
+                    },
+                    minLength: 2
+                });
             });
-
+    
+            $("#predict").click( function(){
+                var movie_list = []
+    
+                $('#selectedMovies li').each( function () {
+                    var movieTitle = $(this).text().split('Remove')[0].trim();
+                    movie_list.push(movieTitle);
+                });
+    
+                var movies = {"movie_list": movie_list};
+    
+                $.ajax({
+                    type: "POST",
+                    url: "/predict",
+                    dataType: "json",
+                    contentType: "application/json;charset=UTF-8",
+                    traditional: "true",
+                    cache: false,
+                    data: JSON.stringify(movies),
+                    success: function (response) {
+                        var ulList = $('#predictedMovies');
+                        var i = 0;
+                        response['recommendations'].forEach(element => {
+                            // var diventry = $('<div/>');
+                            // var fieldset = $('<fieldset/>', {id:i}).css("border",'0');
+                            // var poster = $('<img>').attr('src', imageSrc);                        var li = $('<li/>').text(element);
+                            // var imdbRating = $('<li>').text("imdb: " + response['rating'][element+"-r"]);
+                            // var genre=$('<p/>').text("Genre: " + response['rating'][element+"-g"]);
+                            // var radios = $("<label class='radio-inline'><input type='radio' name="+i+" value=1>Dislike</label> \
+                            // <label class='radio-inline'><input type='radio' name="+i+" value=2>Yet to watch</label> \
+                            // <label class='radio-inline'><input type='radio' name="+i+" value=3>Like</label><br/><br/>");
+                            // diventry.append(li);
+                            // diventry.append(imdbRating);
+                            // diventry.append(genre);
+                            // diventry.append(radios);
+                            // fieldset.append(diventry);
+                            // ulList.append(fieldset);
+                            var card = document.createElement('div');
+                            card.className = 'card';
+                            card.style.margin='2.5%'
+                            card.style.width = '45%';
+                            card.style.padding = '5%';
+    
+                            var image = document.createElement('img');
+                            image.src = response['rating'][element+"-p"];
+                            image.alt = 'Movie Poster';
+                            image.style.width='100%';
+                            card.appendChild(image);
+    
+                            var cardBody = document.createElement('div');
+                            cardBody.className = 'card-body';
+    
+                            var title = document.createElement('h3');
+                            title.className = 'card-title';
+                            title.textContent = element;
+    
+                            var imdbRating = document.createElement('h5');
+                            imdbRating.className = 'card-text';
+                            imdbRating.textContent = 'imdb: ' + response['rating'][element + "-r"];
+    
+                            var genre = document.createElement('h5');
+                            genre.className = 'card-text';
+                            genre.textContent = 'Genre: ' + response['rating'][element + "-g"];
+    
+                            var radioButtons = document.createElement('div');
+                            radioButtons.className = 'radio-buttons';
+    
+                            var QuestionLabel = document.createElement('label');
+                            QuestionLabel.className = 'radio-inline';
+                            QuestionLabel.innerHTML = '<h4>Give Feedback:';
+    
+                            var dislikeLabel = document.createElement('label');
+                            dislikeLabel.className = 'radio-inline';
+                            dislikeLabel.innerHTML = '<input type="radio" name="i' + element + '" value="1"> Dislike';
+    
+                            var yetToWatchLabel = document.createElement('label');
+                            yetToWatchLabel.className = 'radio-inline';
+                            yetToWatchLabel.innerHTML = '<input type="radio" name="i' + element + '" value="2"> Yet to watch';
+    
+                            var likeLabel = document.createElement('label');
+                            likeLabel.className = 'radio-inline';
+                            likeLabel.innerHTML = '<input type="radio" name="i' + element + '" value="3"> Like';
+                            
+                            radioButtons.appendChild(QuestionLabel);
+                            radioButtons.appendChild(dislikeLabel);
+                            radioButtons.appendChild(yetToWatchLabel);
+                            radioButtons.appendChild(likeLabel);
+    
+                            cardBody.appendChild(title);
+                            cardBody.appendChild(imdbRating);
+                            cardBody.appendChild(genre);
+                            cardBody.appendChild(radioButtons);
+    
+                            fetchYouTubeVideoLinks(element, cardBody);
+    
+                            card.appendChild(cardBody);
+                            document.getElementById('predictedMovies').appendChild(card);
+                            return card;
+                            i+=1;
+                        });
+    
+                        // var li = $('<li/>').text()
+                        console.log("->", response['recommendations']);
+                    },
+                    error: function (error) {
+                        console.log("ERROR ->" + error );
+                        displayErrorMessage("Error in fetching recommendations");
+    
+                    }
+                });
+            });
+            function fetchYouTubeVideoLinks(movieTitle, cardBody) {
+    
+                var request = gapi.client.youtube.search.list({
+                    q: movieTitle + ' official trailer',
+                    part: 'snippet',
+                    type: 'video',
+                    maxResults: 1,
+                });
+    
+                request.execute(function (response) {
+                    var videos = response.items;
+    
+                    if (videos.length > 0) {
+                        var trailersHeading = document.createElement('h5');
+                        //trailersHeading.textContent = 'Trailers:';
+                        cardBody.appendChild(trailersHeading);
+    
+                        var trailersList = document.createElement('ul');
+    
+                        videos.forEach(function (video) {
+                            var videoId = video.id.videoId;
+                            var videoLink = 'https://www.youtube.com/watch?v=' + videoId;
+    
+    
+                            var trailerItem = document.createElement('li');
+                            var youtubeLink = document.createElement('a');
+                            youtubeLink.href = videoLink;
+                            youtubeLink.target = '_blank';
+                            youtubeLink.textContent = 'Watch Trailer ';
+    
+                            trailerItem.appendChild(youtubeLink);
+                            trailersList.appendChild(trailerItem);
+                        });
+    
+                        cardBody.appendChild(trailersList);
+                    }
+                });
+            }
+    
+            $('#feedback').click(function(){
+                var myForm = $('fieldset');
+                var data = {};
+                var labels = {
+                    1: 'Dislike',
+                    2: 'Yet to watch',
+                    3: 'Like'
+                };
+                for(var i=0;i<myForm.length;i++){
+                    var input = $('#'+i).find('div').find('input:checked')[0].value;
+                    var movieName = $('#'+i).find('div').find('li')[0].innerText;
+                    data[movieName]=labels[input];
+                }
+                console.log(data);
+    
+                $.ajax({
+                    type: "POST",
+                    url: "/feedback",
+                    dataType: "json",
+                    contentType: "application/json;charset=UTF-8",
+                    traditional: "true",
+                    cache: false,
+                    data: JSON.stringify(data),
+                    success: function (response) {
+                        // console.log("->", response);
+                        // $("#dataCollected").css("display", "block");
+                        window.location.href="/success";
+                    },
+                    error: function (error) {
+                        console.log("ERROR ->" + error );
+                        displayErrorMessage("Please fill in all the fields");
+                    }
+                });
+    
+            });
+    
+    
         });
-
-
-    });
-
-</script>
+    
+    </script>
+</body>
+</html>
