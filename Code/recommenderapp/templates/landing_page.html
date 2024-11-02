@@ -214,6 +214,12 @@
         </div>
     </div>
 
+    <div class="container">
+        <h2>Top 10 Recommended Movies</h2>
+        <button id="generateTopMoviesButton" class="btn btn-danger">Show Top 10 Movies</button>
+        <div id="topMoviesContainer" class="card-container"></div>
+    </div>
+
     <div id="errorMessage" class="error-card">
         <div>
             <h3>Error!</h3>
@@ -476,11 +482,42 @@
             }
         });
 
+
+
     
     
         });
     
     </script>
+    <script>
+            $(document).ready(function () {
+                // Fetch Top 10 Movies
+                $("#generateTopMoviesButton").click(function () {
+                    $.ajax({
+                        type: "POST",
+                        url: "/generate_top_movies",
+                        dataType: "json",
+                        success: function (response) {
+                            const topMoviesContainer = $("#topMoviesContainer");
+                            topMoviesContainer.empty(); // Clear previous list
+    
+                            // Display each movie in the top 10 list
+                            response.top_movies.forEach(movie => {
+                                const movieCard = `
+                                    <div class="card">
+                                        <h4>${movie}</h4>
+                                        <!-- Add more details if needed -->
+                                    </div>`;
+                                topMoviesContainer.append(movieCard);
+                            });
+                        },
+                        error: function (error) {
+                            console.log("Error fetching top movies:", error);
+                        }
+                    });
+                });
+            });
+        </script>
 </body>
 </html>
 
