@@ -8,11 +8,19 @@ The following video showcases our project with significant changes:
 
 ### &nbsp;&nbsp; Improvements in Project 2
 
-We improved and modernized the functionality and user experience of the movie recommendation system to be more visually appealing and intuitive. Key improvements include:
+We have significantly enhanced the functionality, personalization, and user engagement features of the movie recommendation system. Key improvements include:
 
-- **Netflix-Themed Interface**: A modern, familiar design makes navigation intuitive and attractive.
-- **OMDb API Integration**: Users can now access essential movie details, like genre, IMDb ratings, and posters, enriching the recommendation experience.
-- **CORS Issue Resolution**: Implemented "access-control-allow-origin" headers to ensure cross-origin resource sharing compatibility.
+**Personalized Email Recommendations:** Users can now receive weekly email recommendations tailored to their movie-watching preferences, keeping them engaged with fresh content every week.
+
+**User Feedback System:** Added options for users to provide feedback (Like, Dislike, Yet to Watch) on each recommended movie, helping the system improve future recommendations based on user preferences.
+
+**Enhanced Top 10 Movies Section:** A new “Top 10 Movies” section displays the most relevant movie recommendations based on user data, making it easy for users to discover popular and highly rated options.
+
+**History Tracking:** Users can view their recommendation history, allowing them to revisit previously suggested movies and track their watching habits over time.
+
+**Plot-Based Recommendation System:** Integrated a plot-based recommendation feature, which analyzes plot-related data to further refine and personalize movie suggestions.
+
+**Automated Testing and CI Integration:** Implemented GitHub Actions for continuous integration, with comprehensive test coverage for backend and frontend functionalities to maintain system reliability and performance with every new code push.
 
 ---
 
