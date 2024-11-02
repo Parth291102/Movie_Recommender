@@ -4,7 +4,7 @@ The following video shows the original project:
 [Original Project Video](https://www.youtube.com/watch?v=21Rol3h_CQQ)
 
 The following video showcases our project with significant changes:
-[Updated Project Video](https://www.youtube.com/watch?v=bJzWYdG4ug4&feature=youtu.be)
+[Updated Project Video](https://youtu.be/bJzWYdG4ug4)
 
 ### &nbsp;&nbsp; Improvements in Project 2
 
