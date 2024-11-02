@@ -12,6 +12,7 @@
 [![Unit Tests](https://github.com/nikki1234567/MovieRecommender/actions/workflows/test.yml/badge.svg)](https://github.com/nikki1234567/MovieRecommender/actions/workflows/test.yml)
 [![Python Style Checker](https://github.com/nikki1234567/MovieRecommender/actions/workflows/python_style_checker.yml/badge.svg)](https://github.com/nikki1234567/MovieRecommender/actions/workflows/python_style_checker.yml)
 [![Code Formatting](https://github.com/nikki1234567/MovieRecommender/actions/workflows/code_formatting.yml/badge.svg)](https://github.com/nikki1234567/MovieRecommender/actions/workflows/code_formatting.yml)
+[![Lint Python](https://github.com/nikki1234567/MovieRecommender/actions/workflows/syntax_checker.yml/badge.svg)](https://github.com/nikki1234567/MovieRecommender/actions/workflows/syntax_checker.yml)
 
 Discover Your Next Movie Night Gem!<br>
 Tired of endless scrolling, trying to find the perfect movie? 🍿<br><br>
