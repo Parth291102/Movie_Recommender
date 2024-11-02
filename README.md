@@ -57,7 +57,7 @@ Our recommendation engine uses collaborative filtering to help you discover new 
 ---
 
 ## Video ▶️  
-[Watch the video](#)
+[Watch the video](https://youtu.be/bJzWYdG4ug4)
 
 ---
 
