@@ -140,56 +140,6 @@ JavaScript is a versatile and widely used programming language for adding intera
 ![Execution](https://raw.githubusercontent.com/MadhurDixit13/MovieRecommender/master/asset/execution.gif)
 
 
-## *Contributions and Commit Tracking*
-   - *Add a Contribution Guide*: Ensure CONTRIBUTING.md details coding standards, branch naming conventions, and commit message guidelines. Encourage regular commits from all team members, noting that contributions should be balanced across the team.
-   - *Add Evidence of Team Activity*: In CONTRIBUTING.md or a dedicated section, highlight contributions by each team member. You can create a table summarizing commit counts and closed issues per contributor.
-
-## *Issue Tracking*
-   - *Document Issue Workflow*: Describe your process for opening, discussing, and resolving issues. This could be a section in CONTRIBUTING.md or README.md to explain the typical workflow for issue creation and resolution, including feedback loops.
-   - *Issue Labels and Templates*: Add templates for common issues (bug, feature request, etc.), with clear labels to streamline issue reporting.
-
-## *Comprehensive Documentation*
-   - *Class/Function Descriptions*: In code files, ensure each class and function has a short docstring explaining its purpose and parameters. Generate documentation using tools like Sphinx or MkDocs if possible and link it in the README.
-   - *Use Case Tutorials*: Add a "Getting Started" or "Usage" section in README.md or a docs folder, with examples showing:
-      - *Use Case 1*: Setting up and using the recommendation engine for new users.
-      - *Use Case 2*: Submitting feedback (like, dislike, yet to watch) and understanding its impact on future recommendations.
-      - *Use Case 3*: Setting up weekly email recommendations based on viewing history.
-   - *Overview and Motivation*: In README.md, add a brief project motivation explaining why the system was built and how it solves user pain points (e.g., eliminating indecision in choosing movies).
-
-## *Video and Visuals*
-   - *Short Demo Video*: Create a 1-2 minute video that demonstrates how a new user registers, receives recommendations, submits feedback, and views top movies. Host the video on GitHub or a video platform and link it in the README.
-   - *Screenshots*: Add screenshots in README.md or in a docs/screenshots folder, showing key features like the Top 10 Movies section, feedback options, and weekly email setup.
-
-## *Version Control and Release Cycle*
-   - *Git Branching and Releases*: In CONTRIBUTING.md, explain your branching strategy (e.g., main, dev, feature branches) and add guidelines for frequent merges and short release cycles.
-   - *CHANGELOG.md*: Add a CHANGELOG.md to track updates, new features, and bug fixes in each release.
-
-## *Testing Documentation*
-   - *Test Case Coverage*: In README.md or a TESTING.md file, summarize the scope of tests, including:
-      - *Types of Tests*: Valid/invalid input handling, duplicate removal, email recommendation logic, feedback recording.
-      - *Execution*: Describe automated testing with GitHub Actions (e.g., tests triggered on every commit).
-   - *Handling Failing Cases*: In the test documentation, explain how failing test cases are handled, including opening issues and tracking resolutions.
-
-## *Repository Configuration Files*
-   - *GitHub Actions for Testing*: Ensure GitHub Actions configurations are included in .github/workflows, with a description in the README.
-   - *Config Files*: Add configuration files like .gitignore, black, and pylint for code formatting and linting, and include explanations in the README.
-
-## *Additional Files for Open Source Projects*
-   - *INSTALL.md*: Create INSTALL.md to explain setup instructions, required Python packages, and dependencies.
-   - *CODE-OF-CONDUCT.md*: Outline expected behavior and collaboration guidelines in CODE-OF-CONDUCT.md.
-   - *LICENSE.md*: Confirm LICENSE.md is clearly listed as MIT, allowing users to understand their rights.
-
-## *Badges for Code Quality and Analysis*
-   - *Add Badges in README*: Include badges for:
-      - *Code Coverage* (e.g., Codecov)
-      - *Style Checkers* (e.g., Black)
-      - *Build Status* (e.g., GitHub Actions)
-      - *Other Analysis Tools* like syntax checkers or linters
-
-## *Digital Object Identifier (DOI)*
-   - *Zenodo DOI Badge*: Consider registering your project on Zenodo to obtain a DOI for easy referencing and sharing. This badge can be added to the README to improve the project’s credibility.
-
-
 
 
 ## Documentation 📚
