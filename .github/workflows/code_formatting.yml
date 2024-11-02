@@ -12,13 +12,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
         python-version: '3.x'
+
     - name: Install Black
       run: |
-        pip install black
+        pip install black==23.3.0  # specify the Black version you want
+
     - name: Check code formatting
       run: |
         black --check .
