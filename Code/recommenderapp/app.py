@@ -289,11 +289,11 @@ def success():
 @app.route("/generate_top_movies", methods=["POST"])
 @login_required
 def generate_top_movies():
-    liked_movies = Recommendation.query.filter_by(user_id=current_user.id, review="like").all()
+    liked_movies = Recommendation.query.filter_by(user_id=current_user.id, review="Like").all()
     liked_movie_titles = [movie.movie_title for movie in liked_movies]
+    print("Liked movie titles: ", liked_movie_titles)
 
-    training_data = [{"title": title, "rating": 5.0} for title in liked_movie_titles]
-    top_movies = recommendForNewUser(training_data)[:10]
+    top_movies = get_recommendations(liked_movie_titles)
 
     # Store top 10 movies in TopMovies table
     for movie in top_movies:
@@ -301,6 +301,7 @@ def generate_top_movies():
         db.session.add(top_movie_entry)
 
     db.session.commit()
+    print(top_movies)
     return jsonify({"top_movies": top_movies})
 
 
