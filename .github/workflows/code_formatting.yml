@@ -24,4 +24,9 @@ jobs:
 
     - name: Check code formatting
       run: |
-        black --check .
+        black --check --diff .
+
+    - name: Reformat code with Black
+      if: failure()  # This runs only if the previous check failed
+      run: |
+        black .
