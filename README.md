@@ -17,7 +17,6 @@
 
 Discover Your Next Movie Night Gem!<br>
 Tired of endless scrolling, trying to find the perfect movie? 🍿<br><br>
-<img width="400" height="250" alt="color picker" src="https://github.com/nikki1234567/MovieRecommender/blob/master/asset/Front-page.gif?raw=true" /><br><br>
 
 ## Contents
 1. [Introduction](#introduction)
@@ -96,12 +95,12 @@ cd Code/recommenderapp
 python3 app.py
 
 
-For more usage examples, refer to [USAGE.md] or the [Wiki](https://github.com/ebanigogia/MovieRecommender/wiki) for comprehensive tutorials on setting up recommendations, giving feedback, and configuring weekly email notifications.
+For more usage examples, refer to [USAGE.md] or the [Wiki](https://github.com/nikki1234567/MovieRecommender/wiki) for comprehensive tutorials on setting up recommendations, giving feedback, and configuring weekly email notifications.
 
 ---
 
 ## Documentation and Links 📚
-- *Detailed Documentation*: Refer to our [Wiki page](https://github.com/ebanigogia/MovieRecommender/wiki) for technical and user documentation.
+- *Detailed Documentation*: Refer to our [Wiki page](https://github.com/nikki1234567/MovieRecommender/wiki) for technical and user documentation.
 - *Test Coverage*: See our [TESTING.md] file for test details and automated test coverage using GitHub Actions.
 - *Changelog*: Track project updates in [CHANGELOG.md].
 
@@ -118,7 +117,7 @@ Our testing suite includes:
 ---
 
 ## Bug Reporting 🐛  
-Found a bug? [Open an issue](https://github.com/ebanigogia/MovieRecommender/issues) in our repository, and we’ll get on it. We appreciate your feedback! ❤️
+Found a bug? [Open an issue](https://github.com/nikki1234567/MovieRecommender/issues) in our repository, and we’ll get on it. We appreciate your feedback! ❤️
 
 ---
 
