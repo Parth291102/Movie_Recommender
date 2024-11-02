@@ -13,20 +13,20 @@
 
 Discover Your Next Movie Night Gem!<br>
 Tired of endless scrolling, trying to find the perfect movie? 🍿<br><br>
-<img width="400" height="250" alt="color picker" src="https://github.com/MadhurDixit13/MovieRecommender/blob/master/asset/Front-page.gif?raw=true" /><br><br>
+<img width="400" height="250" alt="color picker" src="https://github.com/nikki1234567/MovieRecommender/blob/master/asset/Front-page.gif?raw=true" /><br><br>
 
 # <b>Contents</b>
 
-- [Introduction](https://github.com/MadhurDixit13/MovieRecommender#introduction-%EF%B8%8F)<br>
-- [Future Project Plan](https://github.com/MadhurDixit13/MovieRecommender#future-project-plan-%F0%9F%94%AE)<br>
-- [Video](https://github.com/MadhurDixit13/MovieRecommender#video-%EF%B8%8F)<br>
-- [Working](https://github.com/MadhurDixit13/MovieRecommender#working-)<br>
-- [Tech Stack](https://github.com/MadhurDixit13/MovieRecommender#tech-stack-)<br>
-- [Requirements and Setup](https://github.com/MadhurDixit13/MovieRecommender#requirements-and-setup-%EF%B8%8F)<br>
-- [Usage](https://github.com/MadhurDixit13/MovieRecommender#usage)<br>
-- [Documentation](https://github.com/MadhurDixit13/MovieRecommender#documentation-)<br>
-- [Bug](https://github.com/MadhurDixit13/MovieRecommender#bug-)<br>
-- [License](https://github.com/MadhurDixit13/MovieRecommender#license-%F0%9F%93%83)
+- [Introduction](https://github.com/nikki1234567/MovieRecommender#introduction-%EF%B8%8F)<br>
+- [Future Project Plan](https://github.com/nikki1234567/MovieRecommender#future-project-plan-%F0%9F%94%AE)<br>
+- [Video](https://github.com/nikki1234567/MovieRecommender#video-%EF%B8%8F)<br>
+- [Working](https://github.com/nikki1234567/MovieRecommender#working-)<br>
+- [Tech Stack](https://github.com/nikki1234567/MovieRecommender#tech-stack-)<br>
+- [Requirements and Setup](https://github.com/nikki1234567/MovieRecommender#requirements-and-setup-%EF%B8%8F)<br>
+- [Usage](https://github.com/nikki1234567/MovieRecommender#usage)<br>
+- [Documentation](https://github.com/nikki1234567/MovieRecommender#documentation-)<br>
+- [Bug](https://github.com/nikki1234567/MovieRecommender#bug-)<br>
+- [License](https://github.com/nikki1234567/MovieRecommender#license-%F0%9F%93%83)
 
 
 
