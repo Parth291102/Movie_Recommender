@@ -19,142 +19,119 @@ Discover Your Next Movie Night Gem!<br>
 Tired of endless scrolling, trying to find the perfect movie? 🍿<br><br>
 <img width="400" height="250" alt="color picker" src="https://github.com/nikki1234567/MovieRecommender/blob/master/asset/Front-page.gif?raw=true" /><br><br>
 
-# <b>Contents</b>
+## Contents
+1. [Introduction](#introduction)
+2. [Getting Started](#getting-started)
+3. [Future Project Plan](#future-project-plan)
+4. [Video](#video)
+5. [Working](#working)
+6. [Tech Stack](#tech-stack)
+7. [Requirements and Setup](#requirements-and-setup)
+8. [Usage and Examples](#usage-and-examples)
+9. [Documentation and Links](#documentation-and-links)
+10. [Testing Details](#testing-details)
+11. [Bug Reporting](#bug-reporting)
+12. [License and Contributions](#license-and-contributions)
 
-- [Introduction](https://github.com/nikki1234567/MovieRecommender#introduction-%EF%B8%8F)<br>
-- [Future Project Plan](https://github.com/nikki1234567/MovieRecommender#future-project-plan-%F0%9F%94%AE)<br>
-- [Video](https://github.com/nikki1234567/MovieRecommender#video-%EF%B8%8F)<br>
-- [Working](https://github.com/nikki1234567/MovieRecommender#working-)<br>
-- [Tech Stack](https://github.com/nikki1234567/MovieRecommender#tech-stack-)<br>
-- [Requirements and Setup](https://github.com/nikki1234567/MovieRecommender#requirements-and-setup-%EF%B8%8F)<br>
-- [Usage](https://github.com/nikki1234567/MovieRecommender#usage)<br>
-- [Documentation](https://github.com/nikki1234567/MovieRecommender#documentation-)<br>
-- [Bug](https://github.com/nikki1234567/MovieRecommender#bug-)<br>
-- [License](https://github.com/nikki1234567/MovieRecommender#license-%F0%9F%93%83)
+---
 
+## Introduction 👁️  
+Welcome to our Movie Recommender! 🚀  
+Our recommendation engine uses collaborative filtering to help you discover new movies aligned with your tastes. Based on genres, cast, reviews, and user feedback, it tailors a handpicked list of 10 must-watch movies, saving you time and effort. Say goodbye to indecision, and let Movie Recommender do the work for you. Get started and make every movie night a memorable one! 🌟
 
+---
 
-## Introduction 👁️
+## Getting Started  
+1. *Installation*: Follow the instructions in [INSTALL.md].
+2. *Code of Conduct*: Please read [CODE-OF-CONDUCT.md] to understand expected behavior in our community.
+3. *Contributing*: Follow the guidelines in [CONTRIBUTING.md] for coding standards, branch naming, and commit messages.
+4. *Usage Guide*: Learn about common workflows and functions in [USAGE.md].
 
-Say hello to our Movie Recommender! 🚀<br>
-Just tell us what type of movies you like, and we'll serve up a handpicked list of 10 must-watch movies tailored to your taste. No more movie-night dilemmas! 🎬<br>
-Save time, ditch the hassle, and let Movie Recommender do the work for you. Movie night has never been this easy and exciting! 🌟<br>
-Your perfect movie is just a click away. Get started now and make every movie night a hit! 👏<br><br>
-![Hurray](https://media.giphy.com/media/jwY84621p1hhnG0ANK/giphy.gif)
-
-
-
+---
 
 ## Future Project Plan 🔮
+### Planned Features:
+- *Genre Diversity*: Broadened movie selections across genres, casts, and styles for a more diverse recommendation experience.
+- *Weekly Email Updates*: Registered users will receive weekly emails with personalized movie recommendations.
+- *User Feedback Tracking*: Save user feedback (liked, disliked, yet to watch) to refine future recommendations.
 
-Testing how good the Movie Recommender is :
+---
 
-1. Build a new feature that exhibits diversity across genres, casting choices, and production styles.
-2. An email to be sent to users with the list of movies recommended to them
-3. The user accounts can keep a record of the feedback given by them (liked, disliked or yet to watch).
+## Video ▶️  
+[Watch the video](#)
 
+---
 
-Note: Our system can be virtually tested through Github Actions inbuilt feature of build and test queries using python.
+## Working 📱  
+Our system evaluates movies based on attributes such as genre, cast, director, and user-generated reviews. Using a collaborative filtering model, it combines user preferences with movie characteristics to create personalized recommendations that align with individual tastes. Key features include:
+- *Trailer Viewing*: Watch trailers of recommended movies to make better choices.
+- *Feedback Loop*: Improve recommendations over time by providing feedback on each movie (like, dislike, yet to watch).
+- *User Accounts*: Register to save preferences, track recommendation history, and receive weekly movie updates via email.
 
-Make sure you taste your own medicine first and take into account other peoples familiarity with the system before you design your tests.
+---
 
+## Tech Stack 👨‍💻
+- *Python*
+- *Flask*
+- *HTML, CSS, JavaScript*
 
-## Video ▶️ 
-
-[![Watch the video](https://markdown-videos-api.jorgenkh.no/youtube/303Q73iKKPw)](https://youtu.be/303Q73iKKPw)
-
-
-
-
-
-
-## Working 📱
-
-Below working displays the system also evaluates movie attributes such as genre, cast, director, and user-generated reviews. 
-- By combining these user-specific data and film characteristics, the recommender system employs machine learning to generate tailored movie recommendations.
-- This enables users to discover new films that align with their individual tastes, making the movie-watching experience more enjoyable and engaging.
-- The users can directly watch the trailer of any movie recommended to them. 
-- Furthermore, recommender systems often employ a feedback loop, where users' interactions and feedback help refine the recommendations over time, ensuring that the suggestions remain relevant.
-- The users can register and log in to their accounts to keep a history of the movies recommended for them.
-
-
-
-
-
-
-## Tech stack 👨‍💻
-<details>
-<summary>Python</summary>
-
-Python is a high-level, general-purpose programming language known for its simplicity and readability. It's a widely used language for web development, data analysis, artificial intelligence, and more.
-
-![Python](https://media.giphy.com/media/2vnId4IaAjIGZd2EWC/giphy.gif)
-</details>
-
-<details>
-<summary>Flask</summary>
-
-Flask is a micro web framework written in Python. It's lightweight and easy to use for building web applications, making it an excellent choice for small to medium-sized projects.
-
-![Flask](https://miro.medium.com/v2/resize:fit:679/0*Nh_pliddv1BFAx68.gif)
-</details>
-
-<details>
-<summary>HTML</summary>
-
-HTML (Hypertext Markup Language) is the standard markup language for creating web pages and web applications. It's used for structuring the content on the web.
-
-![HTML](https://media.giphy.com/media/l3vRfNA1p0rvhMSvS/giphy.gif)
-</details>
-
-<details>
-<summary>CSS</summary>
-
-CSS (Cascading Style Sheets) is a style sheet language used for describing the look and formatting of a document written in HTML. It's essential for web design and layout.
-
-![CSS](https://alvaromontoro.com/images/blog/css-typewriter.gif)
-</details>
-
-<details>
-<summary>JavaScript</summary>
-
-JavaScript is a versatile and widely used programming language for adding interactivity and dynamic behavior to web pages. It's essential for client-side web development.
-
-![JavaScript](https://media.giphy.com/media/SvFocn0wNMx0iv2rYz/giphy.gif)
-</details>
+---
 
 ## Requirements and Setup ⚙️
+- *Python 3.5+*
+- *Package Installer (pip)*
+- *Style Check*: Install Black for code formatting (pip install black)
+- *Static Code Analysis*: Pylance (recommended for VS Code)
+
+*Setup*:
+bash
+pip install -r requirements.txt
 
 
-- python 3.5 +
-- pip
-- Style check  - black
-    `pip install black`
-- Static code analyser - Pylance
-    `Install it in VS Code`
+---
 
-- Install all required python packages
-    `pip install -r requirements.txt `
-
-## Usage
-1. `cd Code/recommenderapp`
-2. `python3 app.py`
-
-![Execution](https://raw.githubusercontent.com/MadhurDixit13/MovieRecommender/master/asset/execution.gif)
+## Usage and Examples
+bash
+cd Code/recommenderapp
+python3 app.py
 
 
+For more usage examples, refer to [USAGE.md] or the [Wiki](https://github.com/ebanigogia/MovieRecommender/wiki) for comprehensive tutorials on setting up recommendations, giving feedback, and configuring weekly email notifications.
+
+---
+
+## Documentation and Links 📚
+- *Detailed Documentation*: Refer to our [Wiki page](https://github.com/ebanigogia/MovieRecommender/wiki) for technical and user documentation.
+- *Test Coverage*: See our [TESTING.md] file for test details and automated test coverage using GitHub Actions.
+- *Changelog*: Track project updates in [CHANGELOG.md].
+
+---
+
+## Testing Details
+Our testing suite includes:
+- *Backend Tests*: Validation of recommendation accuracy, feedback recording, and email scheduling.
+- *Frontend Tests*: Automated tests for search, navigation, and feedback capture.
+- *Continuous Integration*: Using GitHub Actions, tests run on each commit to maintain stability and code quality.
 
 
-## Documentation 📚
-Refer to Wiki page [here](https://github.com/ebanigogia/MovieRecommender/wiki/Delta-(Project-3))
 
-## Chat Channel 🗣️
-Refer to our chats [here](https://discord.com/channels/1164337248746082394/1164337249387823152)
+---
 
-## Bug? 🐛
-Raise an issue on this repository, we would love to look at it ❤️
+## Bug Reporting 🐛  
+Found a bug? [Open an issue](https://github.com/ebanigogia/MovieRecommender/issues) in our repository, and we’ll get on it. We appreciate your feedback! ❤️
 
-## License 📃
-This project is under MIT License.
-- The MIT license explicitly grants users the right to reuse code for various purposes,hence for improval of future scope of the code we have added MIT license.
-- They include the original MIT license when distributing it. Allowing users to customize or adapt the code to meet their specific requirements.
+---
+
+## License and Contributions 📃  
+This project is licensed under the MIT License, allowing users to reuse, modify, and adapt the code to suit their needs.  
+
+
+---
+
+### Supporting Files:
+
+- *INSTALL.md*: Details on setting up the environment and installing dependencies.
+- *CODE-OF-CONDUCT.md*: Outlines expected community behavior.
+- *CONTRIBUTING.md*: Details coding standards, commit messages, and branching strategies.
+- *CHANGELOG.md*: Lists updates, fixes, and new features for each release.
+- *TESTING.md*: Describes test case coverage, automated testing, and issue tracking for failed cases.
