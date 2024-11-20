@@ -9,10 +9,8 @@ import pandas as pd
 import random
 import time
 
-
 # Setting the wide mode as default
 st.set_page_config(layout="wide")
-
 displayed = []
 
 if 'movie_number' not in st.session_state:
@@ -106,13 +104,14 @@ def login_page():
                     st.success("Account created successfully! Please login.")
                     st.rerun()
 
+# Main Recommender Dashboard
 def main_dashboard(new_df, movies):
     def initial_options():
         # To display menu
         st.session_state.user_menu = streamlit_option_menu.option_menu(
             menu_title='What are you looking for? 👀',
-            options=['Trending Top 10','Recommend me a similar movie', 'Describe me a movie', 'Check all Movies','Recommendation History','View Feedback'],
-            icons=['stars','film', 'film', 'film','clock-history','hand-thumbs-up'],
+            options=['Trending Top 10','Recommend me a similar movie', 'Describe me a movie', 'Check all Movies', 'Recommendation History','View Feedback'],
+            icons=['stars','film', 'film', 'film', 'clock-history','hand-thumbs-up'],
             menu_icon='list',
             orientation="horizontal",
         )
@@ -152,14 +151,15 @@ def main_dashboard(new_df, movies):
                                 r'Files/similarity_tags_tprduction_comp.pkl',"from the same production company are")
             recommendation_tags(new_df, selected_movie_name, r'Files/similarity_tags_keywords.pkl',"on the basis of keywords are")
             recommendation_tags(new_df, selected_movie_name, r'Files/similarity_tags_tcast.pkl',"on the basis of cast are")
+            
     def update_feedback(movie, status):
         # Update feedback in session state
         st.session_state["feedback"][movie] = status
-        
-    def recommendation_tags(new_df, selected_movie_name, pickle_file_path,str):
+
+    def recommendation_tags(new_df, selected_movie_name, pickle_file_path,description):
 
         movies, posters = preprocess.recommend(new_df, selected_movie_name, pickle_file_path)
-        st.subheader(f'Best Recommendations {str}...')
+        st.subheader(f'Best Recommendations {description}...')
 
         rec_movies = []
         rec_posters = []
@@ -181,6 +181,7 @@ def main_dashboard(new_df, movies):
             "recommendations": rec_movies,
             "time": st.session_state.get("current_time", str(pd.Timestamp.now()))  
             })
+
 
         # Columns to display informations of movies i.e. movie title and movie poster
         col1, col2, col3, col4, col5 = st.columns(5)
@@ -213,8 +214,8 @@ def main_dashboard(new_df, movies):
             st.image(rec_posters[4])
             st.button(f"👍 {rec_movies[4]}", on_click=update_feedback, args=(rec_movies[4], "like"), key=f"like_{rec_movies[4]}")
             st.button(f"👎 {rec_movies[4]}", on_click=update_feedback, args=(rec_movies[4], "dislike"), key=f"dislike_{rec_movies[4]}")
-
-        st.session_state["feedback"] = feedback
+            
+        st.session_state["feedback"] = feedback  
     
     def display_recommendation_history():
         st.title("Recommendation History")
@@ -256,7 +257,7 @@ def main_dashboard(new_df, movies):
 
             # Add a divider
             st.markdown("---")
-        
+
     def display_movie_details():
 
         selected_movie_name = st.session_state.selected_movie_name
@@ -392,7 +393,7 @@ def main_dashboard(new_df, movies):
                     st.session_state['movie_number'] += 10
 
         display_all_movies(st.session_state['movie_number'])
-
+        
     def display_feedback_summary():
         st.title("Your Feedback Summary")
         feedback = st.session_state.get("feedback", {})
@@ -412,7 +413,7 @@ def main_dashboard(new_df, movies):
                 st.subheader("Movies You Disliked:")
                 for movie in dislikes:
                     st.write(f"👎 {movie}")
-                    
+
     def display_all_movies(start):
 
         i = start
@@ -487,6 +488,7 @@ def main_dashboard(new_df, movies):
         new_df, movies, movies2 = bot.getter()
         initial_options()
 
+# Main Application
 def main():
     if st.session_state["username"] is None:
         login_page()
