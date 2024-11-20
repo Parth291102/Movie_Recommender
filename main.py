@@ -177,18 +177,32 @@ def main():
         with col1:
             st.text(rec_movies[0])
             st.image(rec_posters[0])
+            st.button(f"👍 {rec_movies[0]}", on_click=update_feedback, args=(rec_movies[0], "like"), key=f"like_{rec_movies[0]}")
+            st.button(f"👎 {rec_movies[0]}", on_click=update_feedback, args=(rec_movies[0], "dislike"), key=f"dislike_{rec_movies[0]}")
+
         with col2:
             st.text(rec_movies[1])
             st.image(rec_posters[1])
+            st.button(f"👍 {rec_movies[1]}", on_click=update_feedback, args=(rec_movies[1], "like"), key=f"like_{rec_movies[1]}")
+            st.button(f"👎 {rec_movies[1]}", on_click=update_feedback, args=(rec_movies[1], "dislike"), key=f"dislike_{rec_movies[1]}")
+
         with col3:
             st.text(rec_movies[2])
             st.image(rec_posters[2])
+            st.button(f"👍 {rec_movies[2]}", on_click=update_feedback, args=(rec_movies[2], "like"), key=f"like_{rec_movies[2]}")
+            st.button(f"👎 {rec_movies[2]}", on_click=update_feedback, args=(rec_movies[2], "dislike"), key=f"dislike_{rec_movies[2]}")
+
         with col4:
             st.text(rec_movies[3])
             st.image(rec_posters[3])
+            st.button(f"👍 {rec_movies[3]}", on_click=update_feedback, args=(rec_movies[3], "like"), key=f"like_{rec_movies[3]}")
+            st.button(f"👎 {rec_movies[3]}", on_click=update_feedback, args=(rec_movies[3], "dislike"), key=f"dislike_{rec_movies[3]}")
+
         with col5:
             st.text(rec_movies[4])
             st.image(rec_posters[4])
+            st.button(f"👍 {rec_movies[4]}", on_click=update_feedback, args=(rec_movies[4], "like"), key=f"like_{rec_movies[4]}")
+            st.button(f"👎 {rec_movies[4]}", on_click=update_feedback, args=(rec_movies[4], "dislike"), key=f"dislike_{rec_movies[4]}")
 
     def display_movie_details():
 
