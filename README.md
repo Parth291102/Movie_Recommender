@@ -15,6 +15,8 @@
 [![Lint Python](https://github.com/nikki1234567/MovieRecommender/actions/workflows/syntax_checker.yml/badge.svg)](https://github.com/nikki1234567/MovieRecommender/actions/workflows/syntax_checker.yml)
 [![Documentation](https://img.shields.io/badge/Documentation-Wiki-blue.svg)](https://github.com/nikki1234567/MovieRecommender/wiki)
 
+
+# 🎬 Movie Recommender System V2.0 
 Discover Your Next Movie Night Gem!<br>
 Tired of endless scrolling, trying to find the perfect movie? 🍿<br><br>
 
@@ -71,7 +73,7 @@ Our system evaluates movies based on attributes such as genre, cast, director, a
 
 ## Tech Stack 👨‍💻
 - *Python*
-- *Flask*
+- *Streamlit*
 - *HTML, CSS, JavaScript*
 
 ---
