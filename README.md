@@ -63,7 +63,6 @@ Our recommendation engine uses collaborative filtering to help you discover new 
 
 ## Working 📱  
 Our system evaluates movies based on attributes such as genre, cast, director, and user-generated reviews. Using a collaborative filtering model, it combines user preferences with movie characteristics to create personalized recommendations that align with individual tastes. Key features include:
-- *Trailer Viewing*: Watch trailers of recommended movies to make better choices.
 - *Feedback Loop*: Improve recommendations over time by providing feedback on each movie (like, dislike, yet to watch).
 - *User Accounts*: Register to save preferences, track recommendation history, and receive weekly movie updates via email.
 
