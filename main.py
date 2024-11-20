@@ -3,6 +3,12 @@ import streamlit_option_menu
 from streamlit_extras.stoggle import stoggle
 from processing import preprocess
 from processing.display import Main
+import json
+import hashlib
+import pandas as pd
+import random
+import time
+
 
 # Setting the wide mode as default
 st.set_page_config(layout="wide")
@@ -18,6 +24,84 @@ if 'selected_movie_name' not in st.session_state:
 if 'user_menu' not in st.session_state:
     st.session_state['user_menu'] = ""
 
+if 'username' not in st.session_state:
+    st.session_state['username'] = None
+    
+if "feedback" not in st.session_state:
+    st.session_state["feedback"] = {}
+
+# Authentication Helpers
+def load_users():
+    try:
+        with open("users.json", "r") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
+
+def save_users(users):
+    with open("users.json", "w") as f:
+        json.dump(users, f)
+
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
+
+# Dashboard State Initialization
+if 'movie_number' not in st.session_state:
+    st.session_state['movie_number'] = 0
+if 'selected_movie_name' not in st.session_state:
+    st.session_state['selected_movie_name'] = ""
+if 'user_menu' not in st.session_state:
+    st.session_state['user_menu'] = ""
+if 'username' not in st.session_state:
+    st.session_state['username'] = None
+
+# Authentication Pages
+def login_page():
+    st.title("Welcome to Movie Recommender 🎥")
+
+    tab1, tab2 = st.tabs(["Login", "Signup"])
+
+    # Login Section
+    with tab1:
+        st.subheader("Login")
+        username = st.text_input("Username")
+        password = st.text_input("Password", type="password")
+        if st.button("Login"):
+            users = load_users()
+            if username in users and users[username]["password"] == hash_password(password):
+                st.session_state["username"] = username
+                st.success(f"Welcome back, {username}!")
+                st.rerun()
+            else:
+                st.error("Invalid username or password.")
+
+    # Signup Section
+    with tab2:
+        st.subheader("Signup")
+        new_username = st.text_input("Choose a Username")
+        email = st.text_input("Email ID")
+        new_password = st.text_input("Create a Password", type="password")
+        confirm_password = st.text_input("Confirm Password", type="password")
+
+        if st.button("Signup"):
+            if not new_username or not email or not new_password:
+                st.error("All fields are required.")
+            elif new_password != confirm_password:
+                st.error("Passwords do not match.")
+            else:
+                users = load_users()
+                if new_username in users:
+                    st.error("Username already exists.")
+                elif any(user["email"] == email for user in users.values()):
+                    st.error("Email already registered.")
+                else:
+                    users[new_username] = {
+                        "email": email,
+                        "password": hash_password(new_password)
+                    }
+                    save_users(users)
+                    st.success("Account created successfully! Please login.")
+                    st.rerun()
 
 def main():
     def initial_options():
