@@ -11,8 +11,11 @@
 
 
 # 🎬 Movie Recommender System V2.0 🎥
-Discover Your Next Movie Night Gem!<br>
+
+# Description
 Tired of endless scrolling, trying to find the perfect movie? 🍿<br><br>
+Discover Your Next Movie Night Gem!<br>
+
 
 ## Contents
 1. [Introduction](#introduction)
