@@ -225,6 +225,37 @@ def main_dashboard(new_df, movies):
                 st.write(f"**{entry['movie']}** - Recommended on {entry['time']}")
                 for rec in entry["recommendations"]:
                     st.write(f"- {rec}")
+    
+    def display_trending_top_10():
+        st.title("Trending Top 10 Movies This Week 🎬")
+
+        # Seed based on current week
+        week_number = pd.Timestamp.now().week
+        random.seed(week_number)  # Ensure consistency for the week
+
+        # Randomly select 10 movies
+        trending_movies = movies.sample(n=10, random_state=week_number)
+        
+        for index, row in trending_movies.iterrows():
+            # Use columns for layout
+            col1, col2 = st.columns([1, 2])
+
+            # Display poster in the left column
+            with col1:
+                poster_url = preprocess.fetch_posters(row['movie_id'])
+                st.image(poster_url, width=200)
+
+            # Display details in the right column
+            with col2:
+                # Combine overview into a single sentence
+                overview = " ".join(row['overview']) if isinstance(row['overview'], list) else row['overview']
+                st.markdown(f"### {row['title']}")
+                st.markdown(f"<b>Genre:</b> 🎭 <i>{', '.join(row.iloc[3]) if isinstance(row.iloc[3], list) else row.iloc[3]}</i>", unsafe_allow_html=True)
+                st.markdown(f"**Release Date**: 📅 {row['release_date']}")
+                st.write(overview)
+
+            # Add a divider
+            st.markdown("---")
         
     def display_movie_details():
 
