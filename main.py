@@ -174,6 +174,13 @@ def main_dashboard(new_df, movies):
                 rec_posters.append(posters[i])
                 displayed.append(j)
                 cnt += 1
+        
+        # Save recommendations to history
+        st.session_state['recommendation_history'].append({
+            "movie": selected_movie_name,
+            "recommendations": rec_movies,
+            "time": st.session_state.get("current_time", str(pd.Timestamp.now()))  
+            })
 
         # Columns to display informations of movies i.e. movie title and movie poster
         col1, col2, col3, col4, col5 = st.columns(5)
@@ -208,6 +215,16 @@ def main_dashboard(new_df, movies):
             st.button(f"👎 {rec_movies[4]}", on_click=update_feedback, args=(rec_movies[4], "dislike"), key=f"dislike_{rec_movies[4]}")
 
         st.session_state["feedback"] = feedback
+    
+    def display_recommendation_history():
+        st.title("Recommendation History")
+        if not st.session_state['recommendation_history']:
+            st.write("No recommendations made yet.")
+        else:
+            for entry in st.session_state['recommendation_history']:
+                st.write(f"**{entry['movie']}** - Recommended on {entry['time']}")
+                for rec in entry["recommendations"]:
+                    st.write(f"- {rec}")
         
     def display_movie_details():
 
