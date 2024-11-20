@@ -108,8 +108,8 @@ def main():
         # To display menu
         st.session_state.user_menu = streamlit_option_menu.option_menu(
             menu_title='What are you looking for? 👀',
-            options=['Recommend me a similar movie', 'Describe me a movie', 'Check all Movies'],
-            icons=['film', 'film', 'film'],
+            options=['Recommend me a similar movie', 'Describe me a movie', 'Check all Movies','View Feedback'],
+            icons=['film', 'film', 'film','hand-thumbs-up'],
             menu_icon='list',
             orientation="horizontal",
         )
@@ -122,6 +122,15 @@ def main():
 
         elif st.session_state.user_menu == 'Check all Movies':
             paging_movies()
+        
+        elif st.session_state.user_menu == 'Recommendation History':
+            display_recommendation_history()
+            
+        elif st.session_state.user_menu == "View Feedback":
+            display_feedback_summary()
+        
+        elif st.session_state.user_menu == "Trending Top 10":  
+            display_trending_top_10()
 
     def recommend_display():
 
