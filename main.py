@@ -436,6 +436,15 @@ def main():
         new_df, movies, movies2 = bot.getter()
         initial_options()
 
+def main():
+    if st.session_state["username"] is None:
+        login_page()
+    else:
+        st.sidebar.title(f"Welcome, {st.session_state['username']}!")
+        st.sidebar.button("Logout", on_click=lambda: st.session_state.update(username=None))
+        with Main() as bot:
+            new_df, movies, _ = bot.getter()
+            main_dashboard(new_df, movies)
 
 if __name__ == '__main__':
     main()
