@@ -18,36 +18,49 @@ Discover Your Next Movie Night Gem!<br>
 
 
 ## Contents
-- [Introduction](#introduction)
-- [Tech Stack](#techstack)
-- [Development Tools](#development-tools) 
+- [Introduction](#introduction-👁️)
+- [Previous Version](#core-features-✨)
+- [Our Version](#features-added-in-our-version-🚀)
+- [Demo](#demo-▶️)
+- [Tech Stack](#tech-stack-👨‍💻) 
 - [Installation](#installation)
-  - [Pre-requisites](#pre-requisites)
-  - [Actual installation](#actual-installation)
-- [Testing](#testing)
-- [Code Coverage](#code-coverage)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [Road Map](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgements](#acknowledgements)
-- [Support](#support)
-- [FAQs](#faq)
-- [Changelogs](#changelogs)
-- [Code of Conduct](#code-of-conduct)
+- [Documentation](#documentation-and-links-📚)
 
 ---
 
 ## Introduction 👁️  
-Welcome to our Movie Recommender! 🚀  
+Welcome to our Movie Recommender!  
 
-Our **Movie Recommender System** is built using **Python** and **Natural Language Processing (NLP)** to provide personalized and engaging movie recommendations. Whether you're exploring genres, production companies, or specific tags, our system delivers tailored suggestions to enhance your movie-watching experience.  
+Our **Movie Recommender System** is built using **Python** and **Natural Language Processing (NLP)** to provide personalized and engaging movie recommendations. Whether you're exploring genres, production companies, or specific tags, our system delivers tailored suggestions to enhance your movie-watching experience.
 
-## 🚀 Features  
+---
+
+## Core Features ✨ 
+
+### 🎯 **Personalized Recommendations**  
+💡 Get custom-tailored movie suggestions based on your unique interests and preferences.  
+
+### 👤 **User Accounts**  
+🔐 Enjoy user-specific tracking for:  
+- **🎥 Personalized Recommendations**   
+- **🗂 Search History**  
+
+### 💬 **Feedback System**  
+📝 Share your thoughts!  
+- Provide feedback to the movie by like, dislike and yet to watch.  
+
+### 📱 **Mobile-Friendly Design**  
+📱 💻 **Fully Responsive** for both desktop and mobile devices, ensuring a seamless experience wherever you are.  
+
+---  
+
+## Features Added in our Version 🚀  
+
+- **🔐 User Authentication**  
+  - Seamless **Signup** and **Login** functionality for a personalized experience.
 
 - **🔍 Intelligent Movie Recommendations**  
-  - Utilizes the **Bag-of-Words** concept to suggest movies based on similarity, tags, genres, and production companies.  
+  - Utilizes the **Bag-of-Words** concept to suggest movies based on similarity, tags, genres, cast and production companies.  
 
 - **📊 Weekly Top 10 Trending Movies**  
   - Displays trending movies every week, including:  
@@ -56,46 +69,23 @@ Our **Movie Recommender System** is built using **Python** and **Natural Languag
     - **📝 Overview**  
 
 - **🛠 Feedback System**  
-  - Share your thoughts! Let us know if the recommendations match your preferences for an improved experience.  
+  - Share your thoughts! Let us know if the recommendations match your preferences for an improved experience by a thumps down and thumps up gesture. 
 
 - **🗂 Recommendation History**  
   - Keep track of:  
     - Your **search history**  
-    - Our **recommendation history**  
+    - Our **recommendation history**     
+---
 
-- **🔐 User Authentication**  
-  - Seamless **Signup** and **Login** functionality for a personalized experience.  
+## Demo ▶️  
 
-## ✨ Additional Details  
-
-Explore detailed information about each movie, including its **cast**, **genre**, and more. Dive into your tailored movie recommendations and get inspired for your next movie night!  
+---
 
 ## Getting Started  
 1. *Installation*: Follow the instructions in [INSTALL.md].
 2. *Code of Conduct*: Please read [CODE-OF-CONDUCT.md] to understand expected behavior in our community.
 3. *Contributing*: Follow the guidelines in [CONTRIBUTING.md] for coding standards, branch naming, and commit messages.
 4. *Usage Guide*: Learn about common workflows and functions in [USAGE.md].
-
----
-
-## Future Project Plan 🔮
-### Planned Features:
-- *Genre Diversity*: Broadened movie selections across genres, casts, and styles for a more diverse recommendation experience.
-- *Weekly Email Updates*: Registered users will receive weekly emails with personalized movie recommendations.
-- *User Feedback Tracking*: Save user feedback (liked, disliked, yet to watch) to refine future recommendations.
-
----
-
-## Video ▶️  
-[Watch the video](https://youtu.be/bJzWYdG4ug4)
-
----
-
-## Working 📱  
-Our system evaluates movies based on attributes such as genre, cast, director, and user-generated reviews. Using a collaborative filtering model, it combines user preferences with movie characteristics to create personalized recommendations that align with individual tastes. Key features include:
-- *Trailer Viewing*: Watch trailers of recommended movies to make better choices.
-- *Feedback Loop*: Improve recommendations over time by providing feedback on each movie (like, dislike, yet to watch).
-- *User Accounts*: Register to save preferences, track recommendation history, and receive weekly movie updates via email.
 
 ---
 
@@ -106,27 +96,29 @@ Our system evaluates movies based on attributes such as genre, cast, director, a
 
 ---
 
-## Requirements and Setup ⚙️
-- *Python 3.5+*
-- *Package Installer (pip)*
-- *Style Check*: Install Black for code formatting (pip install black)
-- *Static Code Analysis*: Pylance (recommended for VS Code)
+## Installation
 
-*Setup*:
-bash
-pip install -r requirements.txt
+Follow these steps to set up and run the application:
 
+1. **Clone the Repository:** 
+    ```bash
+    git clone -b Version_2.0 https://github.com/Parth291102/Movie_Recommender.git
+    ```
 
----
+2. **Create a Virtual Environment:** 
+   Make sure you have a virtual environment set up for your project.
 
-## Usage and Examples
-bash
-cd Code/recommenderapp
-python3 app.py
+3. **Install Dependencies:**
+   Install the required dependencies using the `requirements.txt` file:
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-
-For more usage examples, refer to [USAGE.md] or the [Wiki](https://github.com/nikki1234567/MovieRecommender/wiki) for comprehensive tutorials on setting up recommendations, giving feedback, and configuring weekly email notifications.
-
+4. **Run the Application:**
+   To start the app, execute the following command in your terminal:
+   ```bash
+   streamlit run main.py
+   ```
 ---
 
 ## Documentation and Links 📚
