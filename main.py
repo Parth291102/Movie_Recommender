@@ -111,8 +111,8 @@ def main_dashboard(new_df, movies):
         # To display menu
         st.session_state.user_menu = streamlit_option_menu.option_menu(
             menu_title='What are you looking for? 👀',
-            options=['Recommend me a similar movie', 'Describe me a movie', 'Check all Movies','Recommendation History','View Feedback'],
-            icons=['film', 'film', 'film','clock-history','hand-thumbs-up'],
+            options=['Trending Top 10','Recommend me a similar movie', 'Describe me a movie', 'Check all Movies','Recommendation History','View Feedback'],
+            icons=['stars','film', 'film', 'film','clock-history','hand-thumbs-up'],
             menu_icon='list',
             orientation="horizontal",
         )
