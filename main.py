@@ -26,6 +26,9 @@ if 'user_menu' not in st.session_state:
 
 if 'username' not in st.session_state:
     st.session_state['username'] = None
+
+if 'recommendation_history' not in st.session_state:
+    st.session_state['recommendation_history'] = []
     
 if "feedback" not in st.session_state:
     st.session_state["feedback"] = {}
