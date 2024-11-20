@@ -204,6 +204,8 @@ def main():
             st.button(f"👍 {rec_movies[4]}", on_click=update_feedback, args=(rec_movies[4], "like"), key=f"like_{rec_movies[4]}")
             st.button(f"👎 {rec_movies[4]}", on_click=update_feedback, args=(rec_movies[4], "dislike"), key=f"dislike_{rec_movies[4]}")
 
+        st.session_state["feedback"] = feedback
+        
     def display_movie_details():
 
         selected_movie_name = st.session_state.selected_movie_name
@@ -340,6 +342,26 @@ def main():
 
         display_all_movies(st.session_state['movie_number'])
 
+    def display_feedback_summary():
+        st.title("Your Feedback Summary")
+        feedback = st.session_state.get("feedback", {})
+
+        if not feedback:
+            st.write("No feedback given yet.")
+        else:
+            likes = [movie for movie, status in feedback.items() if status == "like"]
+            dislikes = [movie for movie, status in feedback.items() if status == "dislike"]
+
+            if likes:
+                st.subheader("Movies You Liked:")
+                for movie in likes:
+                    st.write(f"👍 {movie}")
+
+            if dislikes:
+                st.subheader("Movies You Disliked:")
+                for movie in dislikes:
+                    st.write(f"👎 {movie}")
+                    
     def display_all_movies(start):
 
         i = start
