@@ -18,26 +18,57 @@ Discover Your Next Movie Night Gem!<br>
 
 
 ## Contents
-1. [Introduction](#introduction)
-2. [Getting Started](#getting-started)
-3. [Future Project Plan](#future-project-plan)
-4. [Video](#video)
-5. [Working](#working)
-6. [Tech Stack](#tech-stack)
-7. [Requirements and Setup](#requirements-and-setup)
-8. [Usage and Examples](#usage-and-examples)
-9. [Documentation and Links](#documentation-and-links)
-10. [Testing Details](#testing-details)
-11. [Bug Reporting](#bug-reporting)
-12. [License and Contributions](#license-and-contributions)
+- [Introduction](#introduction)
+- [Tech Stack](#techstack)
+- [Development Tools](#development-tools) 
+- [Installation](#installation)
+  - [Pre-requisites](#pre-requisites)
+  - [Actual installation](#actual-installation)
+- [Testing](#testing)
+- [Code Coverage](#code-coverage)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [Road Map](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+- [Acknowledgements](#acknowledgements)
+- [Support](#support)
+- [FAQs](#faq)
+- [Changelogs](#changelogs)
+- [Code of Conduct](#code-of-conduct)
 
 ---
 
 ## Introduction 👁️  
 Welcome to our Movie Recommender! 🚀  
-Our recommendation engine uses collaborative filtering to help you discover new movies aligned with your tastes. Based on genres, cast, reviews, and user feedback, it tailors a handpicked list of 10 must-watch movies, saving you time and effort. Say goodbye to indecision, and let Movie Recommender do the work for you. Get started and make every movie night a memorable one! 🌟
 
----
+Our **Movie Recommender System** is built using **Python** and **Natural Language Processing (NLP)** to provide personalized and engaging movie recommendations. Whether you're exploring genres, production companies, or specific tags, our system delivers tailored suggestions to enhance your movie-watching experience.  
+
+## 🚀 Features  
+
+- **🔍 Intelligent Movie Recommendations**  
+  - Utilizes the **Bag-of-Words** concept to suggest movies based on similarity, tags, genres, and production companies.  
+
+- **📊 Weekly Top 10 Trending Movies**  
+  - Displays trending movies every week, including:  
+    - **🎥 Poster**  
+    - **🎭 Genre**  
+    - **📝 Overview**  
+
+- **🛠 Feedback System**  
+  - Share your thoughts! Let us know if the recommendations match your preferences for an improved experience.  
+
+- **🗂 Recommendation History**  
+  - Keep track of:  
+    - Your **search history**  
+    - Our **recommendation history**  
+
+- **🔐 User Authentication**  
+  - Seamless **Signup** and **Login** functionality for a personalized experience.  
+
+## ✨ Additional Details  
+
+Explore detailed information about each movie, including its **cast**, **genre**, and more. Dive into your tailored movie recommendations and get inspired for your next movie night!  
 
 ## Getting Started  
 1. *Installation*: Follow the instructions in [INSTALL.md].
