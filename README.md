@@ -1,9 +1,3 @@
-# <i>Movie Recommendation 🎥 </i>
-    A collaborative filtering based recommendation engine!
-
-
-
-
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://github.com/MadhurDixit13)
 
 
@@ -16,7 +10,7 @@
 [![Documentation](https://img.shields.io/badge/Documentation-Wiki-blue.svg)](https://github.com/nikki1234567/MovieRecommender/wiki)
 
 
-# 🎬 Movie Recommender System V2.0 
+# 🎬 Movie Recommender System V2.0 🎥
 Discover Your Next Movie Night Gem!<br>
 Tired of endless scrolling, trying to find the perfect movie? 🍿<br><br>
 
