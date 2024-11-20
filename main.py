@@ -149,7 +149,10 @@ def main():
                                 r'Files/similarity_tags_tprduction_comp.pkl',"from the same production company are")
             recommendation_tags(new_df, selected_movie_name, r'Files/similarity_tags_keywords.pkl',"on the basis of keywords are")
             recommendation_tags(new_df, selected_movie_name, r'Files/similarity_tags_tcast.pkl',"on the basis of cast are")
-
+    def update_feedback(movie, status):
+        # Update feedback in session state
+        st.session_state["feedback"][movie] = status
+        
     def recommendation_tags(new_df, selected_movie_name, pickle_file_path,str):
 
         movies, posters = preprocess.recommend(new_df, selected_movie_name, pickle_file_path)
@@ -158,6 +161,7 @@ def main():
         rec_movies = []
         rec_posters = []
         cnt = 0
+        feedback = st.session_state.get("feedback", {})
         # Adding only 5 uniques recommendations
         for i, j in enumerate(movies):
             if cnt == 5:
