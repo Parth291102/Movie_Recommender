@@ -106,13 +106,13 @@ def login_page():
                     st.success("Account created successfully! Please login.")
                     st.rerun()
 
-def main():
+def main_dashboard(new_df, movies):
     def initial_options():
         # To display menu
         st.session_state.user_menu = streamlit_option_menu.option_menu(
             menu_title='What are you looking for? 👀',
-            options=['Recommend me a similar movie', 'Describe me a movie', 'Check all Movies','View Feedback'],
-            icons=['film', 'film', 'film','hand-thumbs-up'],
+            options=['Recommend me a similar movie', 'Describe me a movie', 'Check all Movies','Recommendation History','View Feedback'],
+            icons=['film', 'film', 'film','clock-history','hand-thumbs-up'],
             menu_icon='list',
             orientation="horizontal",
         )
