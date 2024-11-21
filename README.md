@@ -18,24 +18,28 @@ Discover Your Next Movie Night Gem!<br>
 
 
 ## Contents
-- [Introduction](#introduction-👁️)
-- [Previous Version](#core-features-✨)
-- [Our Version](#features-added-in-our-version-🚀)
-- [Demo](#demo-▶️)
-- [Tech Stack](#tech-stack-👨‍💻) 
+- [Introduction](#introduction)
+- [Previous Version](#core-features)
+- [Our Version](#features-added-in-our-version)
+- [Demo](#demo)
+- [Tech Stack](#tech-stack) 
 - [Installation](#installation)
-- [Documentation](#documentation-and-links-📚)
+- [Testing](#testing)
+  - [Code Coverage](#code-coverage)
+- [Usage](#usage)
+- [License](#lincense)
+- [Supporting Files](supporting-files)
 
 ---
 
-## Introduction 👁️  
+## Introduction   
 Welcome to our Movie Recommender!  
 
 Our **Movie Recommender System** is built using **Python** and **Natural Language Processing (NLP)** to provide personalized and engaging movie recommendations. Whether you're exploring genres, production companies, or specific tags, our system delivers tailored suggestions to enhance your movie-watching experience.
 
 ---
 
-## Core Features ✨ 
+## Core Features 
 
 ### 🎯 **Personalized Recommendations**  
 💡 Get custom-tailored movie suggestions based on your unique interests and preferences.  
@@ -54,7 +58,7 @@ Our **Movie Recommender System** is built using **Python** and **Natural Languag
 
 ---  
 
-## Features Added in our Version 🚀  
+## Features Added in our Version  
 
 - **🔐 User Authentication**  
   - Seamless **Signup** and **Login** functionality for a personalized experience.
@@ -77,7 +81,7 @@ Our **Movie Recommender System** is built using **Python** and **Natural Languag
     - Our **recommendation history**     
 ---
 
-## Demo ▶️  
+## Demo  
 
 ---
 
@@ -89,7 +93,7 @@ Our **Movie Recommender System** is built using **Python** and **Natural Languag
 
 ---
 
-## Tech Stack 👨‍💻
+## Tech Stack
 - *Python*
 - *Streamlit*
 - *HTML, CSS, JavaScript*
@@ -121,38 +125,45 @@ Follow these steps to set up and run the application:
    ```
 ---
 
-## Documentation and Links 📚
-- *Detailed Documentation*: Refer to our [Wiki page](https://github.com/nikki1234567/MovieRecommender/wiki) for technical and user documentation.
-- *Test Coverage*: See our [TESTING.md] file for test details and automated test coverage using GitHub Actions.
-- *Changelog*: Track project updates in [CHANGELOG.md].
+## Testing
+
+  We use pytest to perform testing on all unit tests together. The command needs to be run from the home directory of the project. The command is:
+
+  ```
+  python run -m pytest test/
+  ```
+  (OR)
+  ```
+  python -m pytest test/
+  ```
+---
+
+## Code Coverage
+
+Code coverage is part of the build. Every time new code is pushed to the repository, the build is run, and along with it, code coverage is computed. This can be viewed by selecting the build, and then choosing the codecov pop-up on hover.
+
+Locally, we use the coverage package in python for code coverage. The commands to check code coverage in python are as follows:
+
+```
+coverage run -m pytest test/
+coverage report
+```
 
 ---
 
-## Testing Details
-Our testing suite includes:
-- *Backend Tests*: Validation of recommendation accuracy, feedback recording, and email scheduling.
-- *Frontend Tests*: Automated tests for search, navigation, and feedback capture.
-- *Continuous Integration*: Using GitHub Actions, tests run on each commit to maintain stability and code quality.
-
+## Usage
 
 
 ---
 
-## Bug Reporting 🐛  
-Found a bug? [Open an issue](https://github.com/nikki1234567/MovieRecommender/issues) in our repository, and we’ll get on it. We appreciate your feedback! ❤️
+## License   
+This project is licensed under the [MIT License](LICENSE.md), allowing users to reuse, modify, and adapt the code to suit their needs.  
 
 ---
 
-## License and Contributions 📃  
-This project is licensed under the MIT License, allowing users to reuse, modify, and adapt the code to suit their needs.  
+### Supporting Files
 
-
----
-
-### Supporting Files:
-
-- *INSTALL.md*: Details on setting up the environment and installing dependencies.
-- *CODE-OF-CONDUCT.md*: Outlines expected community behavior.
-- *CONTRIBUTING.md*: Details coding standards, commit messages, and branching strategies.
-- *CHANGELOG.md*: Lists updates, fixes, and new features for each release.
-- *TESTING.md*: Describes test case coverage, automated testing, and issue tracking for failed cases.
+- *[INSTALL.md](Install.md)*: Details on setting up the environment and installing dependencies.
+- *[CODE-OF-CONDUCT.md](CODE_OF_CONDUCT.md)*: Outlines expected community behavior.
+- *[CONTRIBUTING.md](CONTRIBUTING.md)*: Details coding standards, commit messages, and branching strategies.
+- *[CHANGELOG.md](https://github.com/Parth291102/Movie_Recommender/issues)*: Lists updates, fixes, and new features for each release.
