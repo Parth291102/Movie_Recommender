@@ -175,7 +175,7 @@ This project is licensed under the [MIT License](LICENSE.md), allowing users to 
 
 ### Supporting Files
 
-- *[INSTALL.md](Install.md)*: Details on setting up the environment and installing dependencies.
+- *[INSTALL.md](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/INSTALL.md)*: Details on setting up the environment and installing dependencies.
 - *[CODE-OF-CONDUCT.md](CODE_OF_CONDUCT.md)*: Outlines expected community behavior.
 - *[CONTRIBUTING.md](CONTRIBUTING.md)*: Details coding standards, commit messages, and branching strategies.
 - *[CHANGELOG.md](https://github.com/Parth291102/Movie_Recommender/issues)*: Lists updates, fixes, and new features for each release.
