@@ -82,7 +82,7 @@ Our **Movie Recommender System** is built using **Python** and **Natural Languag
 ---
 
 ## Demo
-[![Link to Demo]![image](https://github.com/user-attachments/assets/9f0facb6-bf24-4288-9117-f2ceab69e148)](https://drive.google.com/drive/u/0/my-drive)
+[![Link to Demo](https://github.com/user-attachments/assets/9f0facb6-bf24-4288-9117-f2ceab69e148)](https://drive.google.com/file/d/1_EkBOV__bC8n0r8TRxF73vQg_7AMzNDZ/view?usp=drive_link)
 
 ---
 
