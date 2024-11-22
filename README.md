@@ -164,7 +164,7 @@ Here you go:
 - [Learn to Check Weekly Top 10 Movies!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Trending_Movies.md)
 - [Learn to Check Recommendation History!!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Recommendation_History.md)
 - [Learn to give and check Feedback!!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/View_feedback.md)
-- 
+- [Learn to LogOut!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Logout.md)
 
 ---
 
