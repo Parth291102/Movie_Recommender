@@ -162,7 +162,7 @@ Here you go:
 - [Learn to Check Movie Description!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Describe_movie.md)
 - [Learn to Check All Movies!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Check_all_movies.md)
 - [Learn to Check Weekly Top 10 Movies!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Trending_Movies.md)
-- 
+- [Learn to Check Recommendation History!!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Recommendation_History.md)
 
 ---
 
