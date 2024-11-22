@@ -16,6 +16,8 @@
 Tired of endless scrolling, trying to find the perfect movie? 🍿<br><br>
 Discover Your Next Movie Night Gem!<br>
 
+https://github.com/user-attachments/assets/40929c4c-c2c0-4f6a-9d88-f7caa1216b5d
+
 
 ## Contents
 - [Introduction](#introduction)
