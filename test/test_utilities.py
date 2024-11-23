@@ -21,3 +21,9 @@ def test_save_users():
     with patch("builtins.open", mock_open()) as mock_file:
         save_users(users)
         mock_file.assert_called_once_with("users.json", "w")
+
+# Test for empty users file
+def test_load_users_empty_file():
+    with patch("builtins.open", mock_open(read_data="")):
+        users = load_users()
+        assert users == {}
