@@ -52,4 +52,9 @@ def test_feedback_summary(mock_movies_data, mock_credits_data):
 def test_invalid_movie_selection(mock_movies_data, mock_credits_data):
     with patch("main.st.session_state", {"selected_movie_name": "Invalid Movie"}):
         main_dashboard(mock_movies_data, mock_credits_data)
+
+def test_display_movie_details(mocker):
+    mocker.patch("preprocess.get_details", return_value=["Poster", "Overview", ["Genre1", "Genre2"]])
+    display_movie_details("Sample Movie")
+    assert st.image.called_once_with("Poster")
         assert st.error.called  # Expect an error for invalid selection
