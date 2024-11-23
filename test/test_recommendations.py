@@ -37,3 +37,9 @@ def test_movie_details_display(mock_movies_data, mock_credits_data):
         # Check if movie details like cast and crew are shown
         assert "Leonardo DiCaprio" in st.write.call_args[0][0]  # Cast details
         assert "Christopher Nolan" in st.write.call_args[0][0]  # Director
+
+def test_recommend_display(mock_movies_data, mock_credits_data):
+    with patch("main.st.session_state", {}), patch("main.st.selectbox", return_value="Inception"):
+        main_dashboard(mock_movies_data, mock_credits_data)
+        # Test if movie recommendation feature is working
+        assert st.session_state["selected_movie_name"] == "Inception"
