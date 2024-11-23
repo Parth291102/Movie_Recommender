@@ -59,3 +59,13 @@ def test_recommendation_by_actor(mocker, mock_movies_data):
     recommendations, posters = preprocess.recommend(mock_movies_data, "Inception", "sample.pkl", filter_by="Actor")
     assert "The Matrix" in recommendations
     assert "Leonardo DiCaprio" in mock_credits_data.loc[mock_credits_data['movie_id'] == 1, 'cast'].iloc[0]['name']
+
+def test_missing_or_corrupted_data():
+    corrupted_data = pd.DataFrame({
+        'movie_id': [1, 2],
+        'title': [None, 'The Matrix'],  # Missing title for one movie
+        'genre': ['Sci-Fi', None]      # Missing genre for one movie
+    })
+    valid_movies = preprocess.clean_data(corrupted_data)
+    assert len(valid_movies) == 1
+    assert valid_movies.iloc[0]['title'] == 'The Matrix'
