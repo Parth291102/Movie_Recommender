@@ -88,14 +88,6 @@ Our **Movie Recommender System** is built using **Python** and **Natural Languag
 
 ---
 
-## Getting Started  
-1. *Installation*: Follow the instructions in [INSTALL.md].
-2. *Code of Conduct*: Please read [CODE-OF-CONDUCT.md] to understand expected behavior in our community.
-3. *Contributing*: Follow the guidelines in [CONTRIBUTING.md] for coding standards, branch naming, and commit messages.
-4. *Usage Guide*: Learn about common workflows and functions in [USAGE.md].
-
----
-
 ## Tech Stack
 - *Python*
 - *Streamlit*
