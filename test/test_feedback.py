@@ -21,3 +21,9 @@ def test_multiple_feedback():
         update_feedback("The Matrix", "dislike")
         assert st.session_state["feedback"]["Inception"] == "like"
         assert st.session_state["feedback"]["The Matrix"] == "dislike"
+
+# Test for clearing or overwriting feedback
+def test_clear_feedback():
+    with patch("main.st.session_state", {"feedback": {"Inception": "like"}}):
+        update_feedback("Inception", "dislike")
+        assert st.session_state["feedback"]["Inception"] == "dislike"  # Test overwriting previous feedback
