@@ -50,3 +50,12 @@ def test_recommendation_by_director(mocker, mock_movies_data):
     assert "Inception" in recommendations
     assert "Christopher Nolan" in mock_credits_data.loc[mock_credits_data['movie_id'] == 1, 'crew'].iloc[0]['name']
 
+def test_recommendation_by_actor(mocker, mock_movies_data):
+    mock_credits_data = pd.DataFrame({
+        'movie_id': [1, 2],
+        'cast': [{'name': 'Leonardo DiCaprio'}, {'name': 'Keanu Reeves'}]
+    })
+    mocker.patch("preprocess.recommend", return_value=(["The Matrix"], ["Poster2"]))
+    recommendations, posters = preprocess.recommend(mock_movies_data, "Inception", "sample.pkl", filter_by="Actor")
+    assert "The Matrix" in recommendations
+    assert "Leonardo DiCaprio" in mock_credits_data.loc[mock_credits_data['movie_id'] == 1, 'cast'].iloc[0]['name']
