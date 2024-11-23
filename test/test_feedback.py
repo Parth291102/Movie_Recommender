@@ -7,3 +7,9 @@ def test_like_movie():
     with patch("main.st.session_state", {"feedback": {}}):
         update_feedback("Inception", "like")
         assert st.session_state["feedback"]["Inception"] == "like"
+
+# Test for disliking a movie
+def test_dislike_movie():
+    with patch("main.st.session_state", {"feedback": {}}):
+        update_feedback("Inception", "dislike")
+        assert st.session_state["feedback"]["Inception"] == "dislike"
