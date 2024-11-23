@@ -49,6 +49,12 @@ def test_signup_with_existing_user(mock_users):
             login_page()
             assert st.error.called
 
+def test_signup_with_existing_user1(mock_users):
+    with patch("main.load_users", return_value=mock_users), patch("main.st.text_input", side_effect=["test_user1", "new_email1@example.com", "password1", "password1"]), patch("main.st.button", return_value=True):
+        with patch("main.st.session_state", {}):
+            login_page()
+            assert st.error.called
+
 def test_signup_password_mismatch(mock_users):
     with patch("main.load_users", return_value=mock_users), patch("main.st.text_input", side_effect=["new_user", "new_email@example.com", "password", "wrong_password"]), patch("main.st.button", return_value=True):
         with patch("main.st.session_state", {}):
