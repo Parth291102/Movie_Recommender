@@ -38,3 +38,9 @@ def test_file_not_found(mocker):
     mocker.patch("builtins.open", side_effect=FileNotFoundError)
     with pytest.raises(FileNotFoundError, match="File not found"):
         load_users()
+
+def test_save_users(tmp_path):
+    users = {"test_user": {"email": "test@example.com", "password": "hashed_password"}}
+    users_file = tmp_path / "users.json"
+    save_users(users)
+    assert json.loads(users_file.read_text()) == users
