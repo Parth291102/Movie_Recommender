@@ -13,3 +13,11 @@ def test_dislike_movie():
     with patch("main.st.session_state", {"feedback": {}}):
         update_feedback("Inception", "dislike")
         assert st.session_state["feedback"]["Inception"] == "dislike"
+
+# Test for providing feedback for multiple movies
+def test_multiple_feedback():
+    with patch("main.st.session_state", {"feedback": {}}):
+        update_feedback("Inception", "like")
+        update_feedback("The Matrix", "dislike")
+        assert st.session_state["feedback"]["Inception"] == "like"
+        assert st.session_state["feedback"]["The Matrix"] == "dislike"
