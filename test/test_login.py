@@ -36,6 +36,13 @@ def test_signup_with_new_user(mock_users):
             login_page()
             save_mock.assert_called_once_with({**mock_users, "new_user": {"email": "new_email@example.com", "password": "hashed_password"}})
 
+def test_signup_with_new_user1(mock_users):
+    new_users = mock_users.copy()
+    with patch("main.load_users", return_value=mock_users), patch("main.st.text_input", side_effect=["new_user", "new_email1@example.com", "password1", "password1"]), patch("main.st.button", return_value=True):
+        with patch("main.st.session_state", {}), patch("main.save_users") as save_mock:
+            login_page()
+            save_mock.assert_called_once_with({**mock_users, "new_user": {"email": "new_email@example.com", "password": "hashed_password"}})
+
 def test_signup_with_existing_user(mock_users):
     with patch("main.load_users", return_value=mock_users), patch("main.st.text_input", side_effect=["test_user", "new_email@example.com", "password", "password"]), patch("main.st.button", return_value=True):
         with patch("main.st.session_state", {}):
