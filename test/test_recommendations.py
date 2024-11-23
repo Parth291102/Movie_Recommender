@@ -39,3 +39,14 @@ def test_no_recommendations():
     movies, posters = preprocess.recommend(mock_df, "Unknown Movie", "sample.pkl")
     assert len(movies) == 0
     assert st.text.called_with("No recommendations available.")
+
+def test_recommendation_by_director(mocker, mock_movies_data):
+    mock_credits_data = pd.DataFrame({
+        'movie_id': [1, 2],
+        'crew': [{'job': 'Director', 'name': 'Christopher Nolan'}, {'job': 'Director', 'name': 'Wachowski Brothers'}]
+    })
+    mocker.patch("preprocess.recommend", return_value=(["Inception"], ["Poster1"]))
+    recommendations, posters = preprocess.recommend(mock_movies_data, "Inception", "sample.pkl", filter_by="Director")
+    assert "Inception" in recommendations
+    assert "Christopher Nolan" in mock_credits_data.loc[mock_credits_data['movie_id'] == 1, 'crew'].iloc[0]['name']
+
