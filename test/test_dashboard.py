@@ -58,3 +58,7 @@ def test_display_movie_details(mocker):
     display_movie_details("Sample Movie")
     assert st.image.called_once_with("Poster")
         assert st.error.called  # Expect an error for invalid selection
+
+def test_invalid_movie_name():
+    with pytest.raises(ValueError, match="Movie not found in the dataset."):
+        preprocess.recommend(mock_df, "Invalid Movie", "sample.pkl")
