@@ -27,3 +27,9 @@ def test_load_users_empty_file():
     with patch("builtins.open", mock_open(read_data="")):
         users = load_users()
         assert users == {}
+
+# Test for saving empty data to users file
+def test_save_users_empty_data():
+    with patch("builtins.open", mock_open()) as mock_file:
+        save_users({})
+        mock_file.assert_called_once_with("users.json", "w")
