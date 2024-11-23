@@ -48,3 +48,8 @@ def test_feedback_summary(mock_movies_data, mock_credits_data):
     with patch("main.st.session_state", {"feedback": {"Inception": "like"}}):
         main_dashboard(mock_movies_data, mock_credits_data)
         assert "Movies You Liked:" in st.write.call_args[0][0]
+
+def test_invalid_movie_selection(mock_movies_data, mock_credits_data):
+    with patch("main.st.session_state", {"selected_movie_name": "Invalid Movie"}):
+        main_dashboard(mock_movies_data, mock_credits_data)
+        assert st.error.called  # Expect an error for invalid selection
