@@ -87,3 +87,9 @@ def test_end_to_end_recommendation_flow(mocker, mock_movies_data):
         recommendation_tags(mock_movies_data, "Inception", "sample.pkl", "on the basis of genres")
         assert "Movie1" in st.session_state["recommendation_history"][0]["recommendations"]
         assert st.session_state["selected_movie_name"] == "Inception"
+        
+def test_empty_dataset():
+    empty_data = pd.DataFrame(columns=["movie_id", "title", "genre"])
+    recommendations, posters = preprocess.recommend(empty_data, "Any Movie", "sample.pkl")
+    assert len(recommendations) == 0
+    assert st.text.called_with("Dataset is empty. Cannot generate recommendations.")
