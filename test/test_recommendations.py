@@ -43,3 +43,8 @@ def test_recommend_display(mock_movies_data, mock_credits_data):
         main_dashboard(mock_movies_data, mock_credits_data)
         # Test if movie recommendation feature is working
         assert st.session_state["selected_movie_name"] == "Inception"
+
+def test_feedback_summary(mock_movies_data, mock_credits_data):
+    with patch("main.st.session_state", {"feedback": {"Inception": "like"}}):
+        main_dashboard(mock_movies_data, mock_credits_data)
+        assert "Movies You Liked:" in st.write.call_args[0][0]
