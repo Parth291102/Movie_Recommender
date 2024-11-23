@@ -39,3 +39,22 @@ def test_recommendation_history(mock_main_class):
             assert recommendation_history[0]["movie"] == "Inception"  # Correct movie title
             assert "The Matrix" in recommendation_history[0]["recommendations"]  # "The Matrix" should be in recommendations
             assert "Interstellar" in recommendation_history[0]["recommendations"]  # "Interstellar" should be in recommendations
+
+# Test case for multiple recommendations being added to the history
+def test_multiple_recommendations_history(mock_main_class):
+    # Mock recommendation return values
+    with patch("main.preprocess.recommend", return_value=(["The Matrix", "Interstellar"], ["poster_url1", "poster_url2"])):
+        with patch("main.st.session_state", {"selected_movie_name": "Inception"}):
+            # First recommendation
+            main_instance = mock_main_class
+            main_instance.recommendation_tags(main_instance.new_df, "Inception", "file_path", "on the basis of genres")
+            
+            # Second recommendation for a different movie
+            with patch("main.st.session_state", {"selected_movie_name": "The Matrix"}):
+                main_instance.recommendation_tags(main_instance.new_df, "The Matrix", "file_path", "on the basis of genres")
+            
+            # Check if recommendation history has both entries
+            recommendation_history = st.session_state.get("recommendation_history", [])
+            assert len(recommendation_history) == 2  # History should now contain two entries
+            assert recommendation_history[1]["movie"] == "The Matrix"  # Second entry should be for "The Matrix"
+            assert "Inception" not in recommendation_history[1]["recommendations"]  # "Inception" should not be recommended again
