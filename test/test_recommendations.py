@@ -26,3 +26,10 @@ def test_recommendation_empty_result(mock_movies_data):
         with patch("main.st.session_state", {"selected_movie_name": "Inception"}):
             recommendation_tags(mock_movies_data, "Inception", "file_path", "on the basis of genres")
             assert "No similar movies found." in st.write.call_args[0][0]  # Expect a message when no recommendations are found
+
+def test_recommendation_tags(mocker):
+    mocker.patch("preprocess.recommend", return_value=(["Movie1", "Movie2"], ["Poster1", "Poster2"]))
+    displayed.clear()
+    movies, posters = preprocess.recommend(mock_df, "Sample Movie", "sample.pkl")
+    assert len(set(movies)) == 2
+    assert movies == ["Movie1", "Movie2"]
