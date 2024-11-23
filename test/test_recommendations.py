@@ -80,3 +80,10 @@ def test_genre_specific_recommendations(mocker):
     sci_fi_movies = preprocess.filter_by_genre(mock_data, 'Sci-Fi')
     assert len(sci_fi_movies) == 1
     assert sci_fi_movies.iloc[0]['title'] == 'Movie2'
+
+def test_end_to_end_recommendation_flow(mocker, mock_movies_data):
+    mocker.patch("preprocess.recommend", return_value=(["Movie1", "Movie2"], ["Poster1", "Poster2"]))
+    with patch("main.st.session_state", {"selected_movie_name": "Inception"}):
+        recommendation_tags(mock_movies_data, "Inception", "sample.pkl", "on the basis of genres")
+        assert "Movie1" in st.session_state["recommendation_history"][0]["recommendations"]
+        assert st.session_state["selected_movie_name"] == "Inception"
