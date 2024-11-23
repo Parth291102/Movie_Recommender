@@ -27,3 +27,10 @@ def test_clear_feedback():
     with patch("main.st.session_state", {"feedback": {"Inception": "like"}}):
         update_feedback("Inception", "dislike")
         assert st.session_state["feedback"]["Inception"] == "dislike"  # Test overwriting previous feedback
+
+# Test for no feedback on unselected movie
+def test_no_feedback_on_unselected_movie():
+    with patch("main.st.session_state", {"feedback": {}}):
+        update_feedback("Inception", "like")
+        update_feedback("The Matrix", "dislike")
+        assert "The Matrix" in st.session_state["feedback"]
