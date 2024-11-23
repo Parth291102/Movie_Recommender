@@ -69,3 +69,14 @@ def test_missing_or_corrupted_data():
     valid_movies = preprocess.clean_data(corrupted_data)
     assert len(valid_movies) == 1
     assert valid_movies.iloc[0]['title'] == 'The Matrix'
+
+def test_genre_specific_recommendations(mocker):
+    mock_data = pd.DataFrame({
+        'movie_id': [1, 2, 3],
+        'title': ['Movie1', 'Movie2', 'Movie3'],
+        'genre': ['Action', 'Sci-Fi', 'Drama']
+    })
+    mocker.patch("preprocess.filter_by_genre", return_value=mock_data[mock_data['genre'] == 'Sci-Fi'])
+    sci_fi_movies = preprocess.filter_by_genre(mock_data, 'Sci-Fi')
+    assert len(sci_fi_movies) == 1
+    assert sci_fi_movies.iloc[0]['title'] == 'Movie2'
