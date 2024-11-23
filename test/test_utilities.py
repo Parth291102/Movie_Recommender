@@ -68,3 +68,23 @@ def test_hash_password():
     password = "mypassword"
     hashed = hash_password(password)
     assert hashed == hashlib.sha256(password.encode()).hexdigest()
+
+def test_paging_boundaries():
+    st.session_state['movie_number'] = 0
+    movies = ["Movie1", "Movie2", "Movie3"]
+    prev_page(movies)
+    assert st.session_state['movie_number'] == 0  # Cannot go below 0
+
+    st.session_state['movie_number'] = 3
+    next_page(movies)
+    assert st.session_state['movie_number'] == 3  # Cannot go beyond dataset length
+
+def test_prev_page():
+    st.session_state['movie_number'] = 10
+    prev_page(movies)
+    assert st.session_state['movie_number'] == 0
+
+def test_trending_movies_limit(mocker):
+    mock_movies = pd.DataFrame({"movie_id": range(15), "title": [f"Movie{i}" for i in range(15)]})
+    trending = get_trending_top_10(mock_movies)
+    assert len(trending) == 10

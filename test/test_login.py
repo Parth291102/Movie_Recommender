@@ -89,3 +89,7 @@ def test_successful_login():
     st.session_state['logged_in'] = False
     validate_login("valid_user", "valid_password", users)
     assert st.session_state['logged_in'] is True
+
+def test_password_strength():
+    with pytest.raises(Exception, match="Password must be at least 8 characters."):
+        validate_password("12345")
