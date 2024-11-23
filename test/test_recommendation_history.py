@@ -15,3 +15,11 @@ def mock_movies_data():
     })
     return movies_df
 
+@pytest.fixture
+def mock_main_class():
+    # Initialize Main class
+    main_instance = Main()
+    main_instance.movies = mock_movies_data()
+    main_instance.movies2 = mock_movies_data()
+    main_instance.new_df = mock_movies_data()
+    return main_instance
