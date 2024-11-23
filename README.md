@@ -21,7 +21,7 @@ https://github.com/user-attachments/assets/40929c4c-c2c0-4f6a-9d88-f7caa1216b5d
 
 ## Contents
 - [Introduction](#introduction)
-- [Previous Version](#core-features)
+- [Original Version](#core-features)
 - [Our Version](#features-added-in-our-version)
 - [Demo](#demo)
 - [Tech Stack](#tech-stack) 
@@ -29,6 +29,7 @@ https://github.com/user-attachments/assets/40929c4c-c2c0-4f6a-9d88-f7caa1216b5d
 - [Testing](#testing)
   - [Code Coverage](#code-coverage)
 - [Usage](#usage)
+- [Future Scope](#future-scope)
 - [License](#lincense)
 - [Supporting Files](supporting-files)
 
@@ -37,50 +38,46 @@ https://github.com/user-attachments/assets/40929c4c-c2c0-4f6a-9d88-f7caa1216b5d
 ## Introduction   
 Welcome to our Movie Recommender!  
 
-Our **Movie Recommender System** is built using **Python** and **Natural Language Processing (NLP)** to provide personalized and engaging movie recommendations. Whether you're exploring genres, production companies, or specific tags, our system delivers tailored suggestions to enhance your movie-watching experience.
+Our **Movie Recommender System** is built using **Python** and **Natural Language Processing (NLP)** to provide personalized and engaging movie recommendations. Whether you're exploring genres, production companies, or specific tags, our system delivers tailored suggestions to enhance your movie-watching experience. 
 
 ---
 
 ## Core Features 
 
 ### 🎯 **Personalized Recommendations**  
-💡 Get custom-tailored movie suggestions based on your unique interests and preferences.  
+The engine uses collaborative filtering to recommend movies that are popular among users with similar tastes. Get custom-tailored movie suggestions based on your unique interests and viewing preferences. Whether you're into action, drama, sci-fi, or indie films, our recommendation system adapts to your tastes and suggests the best movies you’re most likely to enjoy. It’s like having your own personal movie curator! 
 
 ### 👤 **User Accounts**  
-🔐 Enjoy user-specific tracking for:  
-- **🎥 Personalized Recommendations**   
-- **🗂 Search History**  
+Now, you can Login and Signin to your password protected account. Recommendations are continuously refined based on the movies you rate and watch. Your preferences and search history are synced across devices, so your experience stays consistent, whether you’re on your phone or desktop. 
 
 ### 💬 **Feedback System**  
-📝 Share your thoughts!  
-- Provide feedback to the movie by like, dislike and yet to watch.  
+Share your feedback by marking movies with like, dislike, or yet to watch to help improve future recommendations. Tell us what you think by liking or disliking movies. Your feedback directly influences your future recommendations.
 
 ### 📱 **Mobile-Friendly Design**  
-📱 💻 **Fully Responsive** for both desktop and mobile devices, ensuring a seamless experience wherever you are.  
+Enjoy a seamless experience on any device. Our responsive interface adapts to any screen size, with intuitive navigation for smooth browsing on both mobile and desktop. Access your recommendations, rate movies, and manage your watchlist anytime, anywhere.  
 
 ---  
 
 ## Features Added in our Version  
 
-- **🔐 User Authentication**  
-  - Seamless **Signup** and **Login** functionality for a personalized experience.
+- **🔐 User Authentication**
+Seamless **Signup** and **Login** functionality for a personalized experience with a toggled visibility function for passwords.
 
 - **🔍 Intelligent Movie Recommendations**  
-  - Utilizes the **Bag-of-Words** concept to suggest movies based on similarity, tags, genres, cast and production companies.  
+Our recommendation system uses Natural Language Processing (NLP) with the Bag-of-Words model to suggest movies based on text data like descriptions, genres, tags, cast, and production companies. By analyzing word frequency and similarities, it identifies movies with similar themes or attributes, even if you haven't watched or rated them. This ensures highly relevant suggestions tailored to your preferences, improving over time as you interact with the system.
 
 - **📊 Weekly Top 10 Trending Movies**  
-  - Displays trending movies every week, including:  
-    - **🎥 Poster**  
-    - **🎭 Genre**  
-    - **📝 Overview**  
+Stay on top of the latest cinematic hits with our Weekly Top 10 Trending Movies feature. Every week, we showcase the hottest films that are making waves, complete with essential details like the movie poster for a visual preview, the genre(s) for quick identification of the film's style, and a brief overview to give you a taste of the plot. Whether you're looking for the most talked-about films or just seeking new recommendations, this feature helps you easily discover the must-watch movies of the week. 
 
 - **🛠 Feedback System**  
-  - Share your thoughts! Let us know if the recommendations match your preferences for an improved experience by a thumps down and thumps up gesture. 
+Our Feedback System lets you actively shape your movie recommendations by providing simple feedback. After watching a suggested film, you can give it a thumbs up if it matches your preferences, or a thumbs down if it doesn't. This helps refine the recommendation engine, ensuring more accurate and personalized suggestions in the future. Your input directly influences the system’s ability to learn from your tastes, enhancing your experience over time and making it easier to discover movies you'll love. The recoreded feedbacks can be viewed on the feedback tab.
 
 - **🗂 Recommendation History**  
-  - Keep track of:  
-    - Your **search history**  
-    - Our **recommendation history**     
+The Recommendation History feature allows you to effortlessly track both your search history and our personalized recommendation history. This gives you a complete overview of the movies you've searched for, explored, or received as suggestions. You can easily revisit previous recommendations, see how your tastes have evolved over time, and pick up where you left off. Whether you're interested in a movie you found earlier or want to see how your preferences have shaped the suggestions you get, this feature ensures you never lose track of your movie journey.
+
+- **✨ UI/UX Enhancements with Streamlit**  
+We've elevated the UI/UX by transitioning from Flask to Streamlit for a more seamless and user-friendly interface. Streamlit brings a clean, interactive design that makes navigation smoother and more intuitive. With real-time updates and a more responsive layout, users can effortlessly browse movie recommendations, track history, and share feedback. This change results in a visually appealing and minimalistic experience, making it easier than ever to enjoy your movie journey!
+
 ---
 
 ## Demo
@@ -159,6 +156,18 @@ Here you go:
 - [Learn to Check Recommendation History!!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Recommendation_History.md)
 - [Learn to give and check Feedback!!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/View_feedback.md)
 - [Learn to LogOut!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Logout.md)
+
+---
+
+## Future Scope
+-**📧 Personalized Email Notifications**
+In the future, we aim to enhance user engagement by sending weekly movie recommendations directly to users via email. These automated notifications will be tailored to individual preferences, making it easy for users to stay updated on the latest film suggestions without having to log in. By delivering fresh content each week, we’ll keep movie nights exciting and hassle-free!
+
+-**🤖 ML Model for Weekly Top 10 Recommendations**
+To further refine our recommendation engine, we’re integrating a machine learning model that will pick the Weekly Top 10 movies based on user feedback. By analyzing preferences, ratings, and trends, the system will continuously improve, ensuring that the most relevant and exciting films make it to the top of your list. This means more accurate and personalized suggestions with every passing week!
+
+-**🎬 Trailer Links with Movie Posters**
+To make the movie selection process even more engaging, we’re planning to add trailer links to each movie poster. With just a click, users will be able to watch a preview of the film before deciding whether it’s worth adding to their watchlist. This feature will make discovering new movies even more interactive and enjoyable!
 
 ---
 
