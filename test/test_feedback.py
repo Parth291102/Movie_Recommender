@@ -34,3 +34,9 @@ def test_no_feedback_on_unselected_movie():
         update_feedback("Inception", "like")
         update_feedback("The Matrix", "dislike")
         assert "The Matrix" in st.session_state["feedback"]
+
+def test_feedback_persistence():
+    st.session_state["feedback"] = {}
+    update_feedback("Sample Movie", "like")
+    update_feedback("Sample Movie", "dislike")
+    assert st.session_state["feedback"]["Sample Movie"] == "dislike"
