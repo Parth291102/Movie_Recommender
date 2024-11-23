@@ -44,3 +44,4 @@ def test_save_users(tmp_path):
     users_file = tmp_path / "users.json"
     save_users(users)
     assert json.loads(users_file.read_text()) == users
+
