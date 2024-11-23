@@ -160,13 +160,13 @@ Here you go:
 ---
 
 ## Future Scope
--**📧 Personalized Email Notifications**
+- **📧 Personalized Email Notifications**
 In the future, we aim to enhance user engagement by sending weekly movie recommendations directly to users via email. These automated notifications will be tailored to individual preferences, making it easy for users to stay updated on the latest film suggestions without having to log in. By delivering fresh content each week, we’ll keep movie nights exciting and hassle-free!
 
--**🤖 ML Model for Weekly Top 10 Recommendations**
+- **🤖 ML Model for Weekly Top 10 Recommendations**
 To further refine our recommendation engine, we’re integrating a machine learning model that will pick the Weekly Top 10 movies based on user feedback. By analyzing preferences, ratings, and trends, the system will continuously improve, ensuring that the most relevant and exciting films make it to the top of your list. This means more accurate and personalized suggestions with every passing week!
 
--**🎬 Trailer Links with Movie Posters**
+- **🎬 Trailer Links with Movie Posters**
 To make the movie selection process even more engaging, we’re planning to add trailer links to each movie poster. With just a click, users will be able to watch a preview of the film before deciding whether it’s worth adding to their watchlist. This feature will make discovering new movies even more interactive and enjoyable!
 
 ---
