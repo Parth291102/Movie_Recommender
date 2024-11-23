@@ -14,3 +14,10 @@ def test_load_users():
     with patch("builtins.open", mock_open(read_data='{"user1": {"password": "hashed"}}')):
         users = load_users()
         assert "user1" in users
+
+# Test for saving users
+def test_save_users():
+    users = {"user1": {"email": "test@example.com", "password": "hashed_password"}}
+    with patch("builtins.open", mock_open()) as mock_file:
+        save_users(users)
+        mock_file.assert_called_once_with("users.json", "w")
