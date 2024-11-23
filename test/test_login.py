@@ -9,6 +9,8 @@ def mock_users():
         "test_user": {
             "email": "test@example.com",
             "password": "hashed_password",
+            "email": "test1@example.com",
+            "password": "test_1",
         }
     }
     return users
