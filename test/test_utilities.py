@@ -33,3 +33,8 @@ def test_save_users_empty_data():
     with patch("builtins.open", mock_open()) as mock_file:
         save_users({})
         mock_file.assert_called_once_with("users.json", "w")
+
+def test_file_not_found(mocker):
+    mocker.patch("builtins.open", side_effect=FileNotFoundError)
+    with pytest.raises(FileNotFoundError, match="File not found"):
+        load_users()
