@@ -65,4 +65,9 @@ def test_signup_empty_fields(mock_users):
     with patch("main.load_users", return_value=mock_users), patch("main.st.text_input", side_effect=["", "new_email@example.com", "", ""]), patch("main.st.button", return_value=True):
         with patch("main.st.session_state", {}):
             login_page()
+
+def test_duplicate_signup():
+    users = {"existing_user": {"email": "test@example.com", "password": "hashed_password"}}
+    with pytest.raises(Exception, match="Username or email already exists."):
+        validate_signup("existing_user", "new_password", users)
             assert st.error.called  # Expect an error message for empty fields
