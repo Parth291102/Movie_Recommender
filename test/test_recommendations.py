@@ -24,3 +24,9 @@ def mock_credits_data():
         'crew': ['Christopher Nolan', 'The Wachowskis']
     })
     return credits_df
+
+def test_initial_options_display(mock_movies_data, mock_credits_data):
+    with patch("main.st.selectbox", return_value="Inception"), patch("main.st.button", return_value=True):
+        main_dashboard(mock_movies_data, mock_credits_data)
+        # Test if the movie options are displayed correctly
+        assert st.session_state["selected_movie_name"] == "Inception"
