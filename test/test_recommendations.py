@@ -92,4 +92,16 @@ def test_empty_dataset():
     empty_data = pd.DataFrame(columns=["movie_id", "title", "genre"])
     recommendations, posters = preprocess.recommend(empty_data, "Any Movie", "sample.pkl")
     assert len(recommendations) == 0
+
+
+def test_duplicate_recommendations():
+    mock_data = pd.DataFrame({
+        'movie_id': [1, 2, 2],
+        'title': ['Movie1', 'Movie2', 'Movie2'],
+        'genre': ['Sci-Fi', 'Sci-Fi', 'Sci-Fi']
+    })
+    unique_recommendations = preprocess.remove_duplicates(mock_data)
+    assert len(unique_recommendations) == 2
+    assert unique_recommendations['title'].is_unique
+
     assert st.text.called_with("Dataset is empty. Cannot generate recommendations.")
