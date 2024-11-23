@@ -40,3 +40,8 @@ def test_feedback_persistence():
     update_feedback("Sample Movie", "like")
     update_feedback("Sample Movie", "dislike")
     assert st.session_state["feedback"]["Sample Movie"] == "dislike"
+
+def test_update_feedback():
+    st.session_state["feedback"] = {}
+    update_feedback("Sample Movie", "like")
+    assert st.session_state["feedback"]["Sample Movie"] == "like"
