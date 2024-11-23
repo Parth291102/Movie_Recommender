@@ -62,3 +62,13 @@ def test_display_movie_details(mocker):
 def test_invalid_movie_name():
     with pytest.raises(ValueError, match="Movie not found in the dataset."):
         preprocess.recommend(mock_df, "Invalid Movie", "sample.pkl")
+
+def test_navigation_buttons(mocker):
+    mocker.patch("streamlit.button", side_effect=["Dashboard", "Logout"])
+    assert st.button.called_with("Dashboard")
+    assert st.button.called_with("Logout")
+
+def test_next_page():
+    st.session_state['movie_number'] = 0
+    next_page(movies)
+    assert st.session_state['movie_number'] == 10

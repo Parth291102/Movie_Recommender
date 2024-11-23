@@ -76,3 +76,9 @@ def test_recommendation_history_retention(mock_main_class):
             assert len(recommendation_history) == 3  # History should contain three entries now
             assert recommendation_history[2]["movie"] == "The Prestige"  # Last entry should be for "The Prestige"
             assert "Interstellar" in recommendation_history[2]["recommendations"]  # "Interstellar" should be in recommendations
+
+def test_filtered_recommendations(mocker):
+    mocker.patch("preprocess.filter_movies", return_value=["Filtered Movie1", "Filtered Movie2"])
+    filtered_movies = preprocess.filter_movies(mock_df, genre="Action")
+    assert len(filtered_movies) == 2
+    assert "Filtered Movie1" in filtered_movies

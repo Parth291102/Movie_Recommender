@@ -63,3 +63,8 @@ def test_large_dataset_performance(mocker):
     mocker.patch("preprocess.recommend", return_value=(["Movie1"], ["Poster1"]))
     movies, posters = preprocess.recommend(large_dataset, "Sample Movie", "sample.pkl")
     assert len(movies) > 0
+
+def test_hash_password():
+    password = "mypassword"
+    hashed = hash_password(password)
+    assert hashed == hashlib.sha256(password.encode()).hexdigest()
