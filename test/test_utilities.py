@@ -129,4 +129,9 @@ def test_movies_with_missing_release_date():
 def test_movie_data_consistency():
     mock_movies = pd.DataFrame({"movie_id": [1, 2], "title": ["Movie A", "Movie B"], "release_date": ["2024-01-01", "2024-02-01"]})
     result = get_trending_top_10(mock_movies)
-    assert all(movie["title"] in mock_movies["title"].values for movie in result)            
+    assert all(movie["title"] in mock_movies["title"].values for movie in result) 
+
+def test_load_movies_missing_columns():
+    mock_movies = pd.DataFrame({"movie_id": [1, 2], "name": ["Movie A", "Movie B"]})
+    with pytest.raises(KeyError):
+        preprocess_movie_data(mock_movies)    
