@@ -42,7 +42,24 @@ st.markdown("""
         transition: background-color 0.3s ease;
     }
 
-    
+    .movie-container:hover {
+        background-color: rgba(255,255,255,0.05);
+    }
+    .poster-container {
+        width: 200px;
+        flex-shrink: 0;
+        margin-right: 20px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+    .poster-container:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+
     </style>
 """, unsafe_allow_html=True)
 
