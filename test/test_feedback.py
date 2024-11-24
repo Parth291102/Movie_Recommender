@@ -81,3 +81,9 @@ def test_update_same_feedback():
     with patch("main.st.session_state", {"feedback": {"Inception": "like"}}):
         update_feedback("Inception", "like")  
         assert st.session_state["feedback"]["Inception"] == "like"
+
+def test_long_movie_title():
+    long_title = "A Very Long Movie Title That Exceeds Normal Length"
+    with patch("main.st.session_state", {"feedback": {}}):
+        update_feedback(long_title, "like")
+        assert st.session_state["feedback"][long_title] == "like"
