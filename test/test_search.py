@@ -120,6 +120,13 @@ class Tests(unittest.TestCase):
     search = Search()
     filtered_dict = search.resultsTop10(search_word)
     self.assertTrue(any("The Dark Knight" in title for title in filtered_dict), "Expected 'The Dark Knight' in the results")
+
+    def testSearchPartialTitleMatch(self):
+    search_word = "Avengers"
+    search = Search()
+    filtered_dict = search.resultsTop10(search_word)
+    self.assertTrue(any("Avengers" in title for title in filtered_dict), "Expected a match for 'Avengers' in the title")
+
     
 
     def testSearchWithAccents(self):
