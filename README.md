@@ -133,3 +133,8 @@ This project is licensed under the MIT License, allowing users to reuse, modify,
 - *CONTRIBUTING.md*: Details coding standards, commit messages, and branching strategies.
 - *CHANGELOG.md*: Lists updates, fixes, and new features for each release.
 - *TESTING.md*: Describes test case coverage, automated testing, and issue tracking for failed cases.
+
+### Contributors:
+- *Parth Parikh - pparikh2 -> pparikh2@ncsu.edu*
+- *Mrudani Hada - mhada2 -> mhada2@ncsu.edu*
+- *Jamnesh Patel - jpatel42 -> jpatel42@ncsu.edu*
