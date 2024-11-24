@@ -323,8 +323,25 @@ def main_dashboard(new_df, movies):
             st.button(f"👎 {rec_movies[0]}", on_click=update_feedback, args=(rec_movies[0], "dislike"), key=f"dislike_{rec_movies[0]}")    
 
         with col2:
+            poster_url = preprocess.fetch_posters(rec_movies[1])
             st.text(rec_movies[1])
-            st.image(rec_posters[1])
+            # Wrap the image in a div with the 'poster-container' class for hover effect
+            st.markdown(
+                f"""
+                    <div class="poster-container">
+                    <a href="https://www.youtube.com/results?search_query={rec_movies[1]}+trailer" 
+                    target="_blank" class="poster-link">
+                    <img src="{rec_posters[1]}" class="movie-poster" alt="{rec_movies[1]}">
+                    <button class="trailer-button">
+                            🎬 Watch Trailer
+                        </button>
+                    </a>
+                    </div>
+                    """,
+                     unsafe_allow_html=True
+                    )
+
+            
             st.button(f"👍 {rec_movies[1]}", on_click=update_feedback, args=(rec_movies[1], "like"), key=f"like_{rec_movies[1]}")
             st.button(f"👎 {rec_movies[1]}", on_click=update_feedback, args=(rec_movies[1], "dislike"), key=f"dislike_{rec_movies[1]}")
 
