@@ -76,6 +76,9 @@ Our Feedback System lets you actively shape your movie recommendations by provid
 - **🗂 Recommendation History**  
 The Recommendation History feature allows you to effortlessly track both your search history and our personalized recommendation history. This gives you a complete overview of the movies you've searched for, explored, or received as suggestions. You can easily revisit previous recommendations, see how your tastes have evolved over time, and pick up where you left off. Whether you're interested in a movie you found earlier or want to see how your preferences have shaped the suggestions you get, this feature ensures you never lose track of your movie journey.
 
+- **🎬 Watch the Trailer**
+Dive into the cinematic world of your next favorite film! Simply click on the movie poster or hit the "Watch Trailer" button to preview the excitement. Don't miss out on the visual journey!
+
 - **✨ UI/UX Enhancements with Streamlit**  
 We've elevated the UI/UX by transitioning from Flask to Streamlit for a more seamless and user-friendly interface. Streamlit brings a clean, interactive design that makes navigation smoother and more intuitive. With real-time updates and a more responsive layout, users can effortlessly browse movie recommendations, track history, and share feedback. This change results in a visually appealing and minimalistic experience, making it easier than ever to enjoy your movie journey!
 
