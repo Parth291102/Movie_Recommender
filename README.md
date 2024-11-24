@@ -171,7 +171,7 @@ In the future, we aim to enhance user engagement by sending weekly movie recomme
 - **🤖 ML Model for Weekly Top 10 Recommendations**
 To further refine our recommendation engine, we’re integrating a machine learning model that will pick the Weekly Top 10 movies based on user feedback. By analyzing preferences, ratings, and trends, the system will continuously improve, ensuring that the most relevant and exciting films make it to the top of your list. This means more accurate and personalized suggestions with every passing week!
 
--**🚀 Data Visualization**
+- **🚀 Data Visualization**
 In the future, we plan to enhance user experience by converting feedback data into interactive, customizable visualizations. Users will be able to explore dynamic charts and real-time dashboards, providing deeper insights and actionable trends, all tailored to their preferences. This feature will empower users to analyze feedback more intuitively and make informed decisions with ease. Stay tuned for this exciting addition! ✨
 
 ---
