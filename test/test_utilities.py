@@ -115,3 +115,8 @@ def test_trending_top_10_with_less_movies():
     mock_movies = pd.DataFrame({"movie_id": range(5), "title": [f"Movie{i}" for i in range(5)]})
     trending = get_trending_top_10(mock_movies)
     assert len(trending) == 5
+
+def test_load_credits_file_not_found(mocker):
+    mocker.patch("builtins.open", side_effect=FileNotFoundError)
+    with pytest.raises(FileNotFoundError):
+        load_credits("tmdb_5000_credits.csv")    
