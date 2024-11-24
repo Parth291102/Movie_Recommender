@@ -135,3 +135,9 @@ def test_load_movies_missing_columns():
     mock_movies = pd.DataFrame({"movie_id": [1, 2], "name": ["Movie A", "Movie B"]})
     with pytest.raises(KeyError):
         preprocess_movie_data(mock_movies)    
+
+def test_load_movies():
+    with patch("builtins.open", mock_open(read_data="movie_id,title,release_date\n1,Movie A,2024-01-01\n2,Movie B,2024-02-01")):
+        movies = load_movies("tmdb_5000_movies.csv")
+        assert len(movies) == 2
+        assert movies[0]["title"] == "Movie A"
