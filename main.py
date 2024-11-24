@@ -59,6 +59,51 @@ st.markdown("""
         box-shadow: 0 8px 16px rgba(0,0,0,0.3);
     }
 
+    .info-container {
+        flex-grow: 1;
+    }
+    .movie-poster {
+        width: 200px;
+        height: 300px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    .poster-link {
+        display: block;
+        position: relative;
+        text-decoration: none;
+    }
+    .poster-link::after {
+        content: '🎬';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 40px;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+    .poster-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+            to bottom,
+            rgba(0,0,0,0) 0%,
+            rgba(0,0,0,0.7) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .poster-link:hover::before,
+    .poster-link:hover::after {
+        opacity: 1;
+    }
+
 
     </style>
 """, unsafe_allow_html=True)
