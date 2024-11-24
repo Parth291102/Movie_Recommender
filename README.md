@@ -62,8 +62,7 @@ Enjoy a seamless experience on any device. Our responsive interface adapts to an
 ## Features Added in our Version  
 
 - **🔐 User Authentication**
-
-Seamless **Signup** and **Login** functionality for a personalized experience with a toggled visibility function for passwords.
+  Seamless **Signup** and **Login** functionality for a personalized experience with a toggled visibility function for passwords.
 
 - **🔍 Intelligent Movie Recommendations**  
 Our recommendation system uses Natural Language Processing (NLP) with the Bag-of-Words model to suggest movies based on text data like descriptions, genres, tags, cast, and production companies. By analyzing word frequency and similarities, it identifies movies with similar themes or attributes, even if you haven't watched or rated them. This ensures highly relevant suggestions tailored to your preferences, improving over time as you interact with the system.
@@ -172,8 +171,8 @@ In the future, we aim to enhance user engagement by sending weekly movie recomme
 - **🤖 ML Model for Weekly Top 10 Recommendations**
 To further refine our recommendation engine, we’re integrating a machine learning model that will pick the Weekly Top 10 movies based on user feedback. By analyzing preferences, ratings, and trends, the system will continuously improve, ensuring that the most relevant and exciting films make it to the top of your list. This means more accurate and personalized suggestions with every passing week!
 
-- **🎬 Trailer Links with Movie Posters**
-To make the movie selection process even more engaging, we’re planning to add trailer links to each movie poster. With just a click, users will be able to watch a preview of the film before deciding whether it’s worth adding to their watchlist. This feature will make discovering new movies even more interactive and enjoyable!
+-**🚀 Data Visualization**
+In the future, we plan to enhance user experience by converting feedback data into interactive, customizable visualizations. Users will be able to explore dynamic charts and real-time dashboards, providing deeper insights and actionable trends, all tailored to their preferences. This feature will empower users to analyze feedback more intuitively and make informed decisions with ease. Stay tuned for this exciting addition! ✨
 
 ---
 
