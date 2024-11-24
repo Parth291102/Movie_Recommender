@@ -8,13 +8,13 @@
 ![image](https://github.com/user-attachments/assets/0d9c8d47-cae4-4e6b-a226-e727c50542ab)
 
 4. On clicking the button you will be displayed with top 5 movies from an ML model based on top picks, genre, cast, same keywords and production company
-![image](https://github.com/user-attachments/assets/777afd01-dc30-49bd-abf3-4bc53b287433)
-![image](https://github.com/user-attachments/assets/1363fd62-70c4-4f90-9024-2d6188536ed3)
-![image](https://github.com/user-attachments/assets/a51e119a-5fa6-416c-80a7-71bdbb7024eb)
-![image](https://github.com/user-attachments/assets/54094cd4-4a5c-42bd-8f7d-5a755afc178b)
-![image](https://github.com/user-attachments/assets/38d0405e-972b-4364-83a1-670bc9701010)
+![image](https://github.com/user-attachments/assets/f1eeab72-850a-4875-8dd7-72b4b8db3375)
+![image](https://github.com/user-attachments/assets/1ab7fbcd-a16f-428d-abc5-46ccef31b6a0)
+![image](https://github.com/user-attachments/assets/023ece77-6170-406e-afa0-adfec8925489)
+![image](https://github.com/user-attachments/assets/ddbecaec-becb-4572-a929-e52d5e1aa7b0)
+![image](https://github.com/user-attachments/assets/8cb064f6-6ff3-430f-9815-06a0db361723)
 
-5. Sit back watch your new recomended list of movies and rate the recomendation of our model !!
+6. Sit back watch your new recomended list of movies and rate the recomendation of our model !!
 
 
 
