@@ -437,16 +437,28 @@ def main_dashboard(new_df, movies):
             # Display poster in the left column
             with col1:
                 poster_url = preprocess.fetch_posters(row['movie_id'])
-                st.image(poster_url, width=200)
-
-            # Display details in the right column
-            with col2:
-                # Combine overview into a single sentence
-                overview = " ".join(row['overview']) if isinstance(row['overview'], list) else row['overview']
-                st.markdown(f"### {row['title']}")
-                st.markdown(f"<b>Genre:</b> 🎭 <i>{', '.join(row.iloc[3]) if isinstance(row.iloc[3], list) else row.iloc[3]}</i>", unsafe_allow_html=True)
-                st.markdown(f"**Release Date**: 📅 {row['release_date']}")
-                st.write(overview)
+            st.markdown(f"""
+            <div class="movie-container">
+                <div class="poster-container">
+                    <a href="https://www.youtube.com/results?search_query={row['title']}+trailer" 
+                       target="_blank" 
+                       class="poster-link">
+                        <img src="{preprocess.fetch_posters(row['movie_id'])}" 
+                             class="movie-poster" 
+                             alt="{row['title']}">
+                        <button class="trailer-button">
+                            🎬 Watch Trailer
+                        </button>
+                    </a>
+                </div>
+                <div class="info-container">
+                    <h3>{row['title']}</h3>
+                    <p><b>Genre:</b> 🎭 <i>{', '.join(row.iloc[3]) if isinstance(row.iloc[3], list) else row.iloc[3]}</i></p>
+                    <p><b>Release Date</b>: 📅 {row['release_date']}</p>
+                    <p>{' '.join(row['overview']) if isinstance(row['overview'], list) else row['overview']}</p>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
 
             # Add a divider
             st.markdown("---")
