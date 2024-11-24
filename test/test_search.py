@@ -115,6 +115,13 @@ class Tests(unittest.TestCase):
         search_results = search.resultsTop10(search_word)
         self.assertTrue(len(search_results) <= 10)
 
+    def testSearchMultipleWords(self):
+    search_word = "The Dark Knight"
+    search = Search()
+    filtered_dict = search.resultsTop10(search_word)
+    self.assertTrue(any("The Dark Knight" in title for title in filtered_dict), "Expected 'The Dark Knight' in the results")
+    
+
     def testSearchWithAccents(self):
         search_word = "Amelie"  # Removed accent for consistency
         search = Search()
