@@ -81,3 +81,9 @@ def test_movie_search_functionality(mock_movies_data, mock_credits_data):
     with patch("main.st.selectbox", return_value="The Matrix"):
         main_dashboard(mock_movies_data, mock_credits_data)
         assert st.session_state["selected_movie_name"] == "The Matrix"
+
+def test_empty_movie_data():
+    empty_movie_data = pd.DataFrame(columns=["movie_id", "title", "genre"])
+    with patch("main.st.selectbox", return_value="Inception"):
+        main_dashboard(empty_movie_data, mock_credits_data)
+        assert st.write.called_with("No movies available.")
