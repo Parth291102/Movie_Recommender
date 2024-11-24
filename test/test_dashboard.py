@@ -72,3 +72,7 @@ def test_next_page():
     st.session_state['movie_number'] = 0
     next_page(movies)
     assert st.session_state['movie_number'] == 10
+
+def test_data_loading(mock_movies_data, mock_credits_data):
+    assert not mock_movies_data.empty, "Movies data is empty"
+    assert not mock_credits_data.empty, "Credits data is empty"
