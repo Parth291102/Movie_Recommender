@@ -31,6 +31,7 @@ Tired of endless scrolling, trying to find the perfect movie? 🍿<br><br>
 10. [Testing Details](#testing-details)
 11. [Bug Reporting](#bug-reporting)
 12. [License and Contributions](#license-and-contributions)
+13. [Contributors](#contributors)
 
 ---
 
