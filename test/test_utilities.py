@@ -105,3 +105,8 @@ def test_preprocess_movie_data():
     processed_data = preprocess_movie_data(raw_data)
     assert "release_date" in processed_data.columns
     assert processed_data["title"].iloc[0] == "Movie A"
+
+def test_load_movies_file_not_found(mocker):
+    mocker.patch("builtins.open", side_effect=FileNotFoundError)
+    with pytest.raises(FileNotFoundError):
+        load_movies("tmdb_5000_movies.csv")    
