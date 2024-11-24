@@ -77,3 +77,7 @@ def test_invalid_feedback():
         update_feedback("Inception", "favorite")  
         assert "Inception" not in st.session_state["feedback"]
 
+def test_update_same_feedback():
+    with patch("main.st.session_state", {"feedback": {"Inception": "like"}}):
+        update_feedback("Inception", "like")  
+        assert st.session_state["feedback"]["Inception"] == "like"
