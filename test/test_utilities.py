@@ -98,4 +98,10 @@ def test_load_movies():
 def test_load_empty_movie_dataset():
     with patch("builtins.open", mock_open(read_data="")):
         movies = load_movies("tmdb_5000_movies.csv")
-        assert movies == []        
+        assert movies == []
+
+def test_preprocess_movie_data():
+    raw_data = pd.DataFrame({"movie_id": [1, 2], "title": ["Movie A", "Movie B"], "release_date": ["2024-01-01", "2024-02-01"]})
+    processed_data = preprocess_movie_data(raw_data)
+    assert "release_date" in processed_data.columns
+    assert processed_data["title"].iloc[0] == "Movie A"
