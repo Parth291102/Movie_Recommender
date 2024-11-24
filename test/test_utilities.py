@@ -88,3 +88,9 @@ def test_trending_movies_limit(mocker):
     mock_movies = pd.DataFrame({"movie_id": range(15), "title": [f"Movie{i}" for i in range(15)]})
     trending = get_trending_top_10(mock_movies)
     assert len(trending) == 10
+
+def test_load_movies():
+    with patch("builtins.open", mock_open(read_data="movie_id,title,release_date\n1,Movie A,2024-01-01\n2,Movie B,2024-02-01")):
+        movies = load_movies("tmdb_5000_movies.csv")
+        assert len(movies) == 2
+        assert movies[0]["title"] == "Movie A"
