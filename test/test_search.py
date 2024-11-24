@@ -127,6 +127,12 @@ class Tests(unittest.TestCase):
     filtered_dict = search.resultsTop10(search_word)
     self.assertTrue(any("Avengers" in title for title in filtered_dict), "Expected a match for 'Avengers' in the title")
 
+    def testSearchWithHyphenInTitle(self):
+    search_word = "Spider-Man"
+    search = Search()
+    filtered_dict = search.resultsTop10(search_word)
+    self.assertTrue(any("Spider-Man" in title for title in filtered_dict), "Expected a movie with 'Spider-Man' in the title")
+
     
 
     def testSearchWithAccents(self):
