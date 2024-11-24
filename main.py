@@ -104,6 +104,24 @@ st.markdown("""
         opacity: 1;
     }
 
+    .trailer-button {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        padding: 8px 15px;
+        background-color: #ff0000;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: bold;
+    }
+    .trailer-button:hover {
+        background-color: #cc0000;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
 
     </style>
 """, unsafe_allow_html=True)
