@@ -139,6 +139,11 @@ class Tests(unittest.TestCase):
     filtered_dict = search.resultsTop10(search_word)
     self.assertTrue(any("Fast & Furious" in title for title in filtered_dict), "Expected a movie with 'Fast & Furious' in the title")
 
+    def testSearchWithNumbersAndLetters(self):
+    search_word = "Hero"
+    search = Search()
+    filtered_dict = search.resultsTop10(search_word)
+    self.assertTrue(any("Fast & Furious" in title for title in filtered_dict), "Expected a movie with 'Fast & Furious' in the title")
 
     
 
