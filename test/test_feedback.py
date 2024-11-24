@@ -72,3 +72,8 @@ def test_empty_movie_title():
         update_feedback("", "like")
         assert "" not in st.session_state["feedback"]
 
+def test_invalid_feedback():
+    with patch("main.st.session_state", {"feedback": {}}):
+        update_feedback("Inception", "favorite")  
+        assert "Inception" not in st.session_state["feedback"]
+
