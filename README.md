@@ -151,6 +151,7 @@ Here you go:
 - [Learn to Sign Up!!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/SignUp.md)
 - [Learn to Log In!!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Login.md)
 - [Learn to Search for your Movie Recommendation!!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Recommender.md)
+- [Learn to watch the trailer!!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Watch_Trailer.md)
 - [Learn to Check Movie Description!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Describe_movie.md)
 - [Learn to Check All Movies!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Check_all_movies.md)
 - [Learn to Check Weekly Top 10 Movies!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Trending_Movies.md)
