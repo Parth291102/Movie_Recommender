@@ -5,7 +5,7 @@
 ![image](https://github.com/user-attachments/assets/0bbdbe24-34e4-4624-9bd6-51d9b2e6d458)
 
 3. click on Login button and you will be entering the whole new world of movies so pack your popcorn and relax!!
-![image](https://github.com/user-attachments/assets/7c093109-a834-4fc2-ac64-b36df3cb7c19)
+![image](https://github.com/user-attachments/assets/752aebb3-f6c7-4985-ac54-6c0c8cb50835)
 
 
 
