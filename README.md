@@ -62,6 +62,7 @@ Enjoy a seamless experience on any device. Our responsive interface adapts to an
 ## Features Added in our Version  
 
 - **🔐 User Authentication**
+
 Seamless **Signup** and **Login** functionality for a personalized experience with a toggled visibility function for passwords.
 
 - **🔍 Intelligent Movie Recommendations**  
