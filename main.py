@@ -29,6 +29,20 @@ st.markdown("""
     .white-font {
         color: white !important;
     }
+
+    .red-font {
+        color: #ff3366 !important;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .movie-container {
+        display: flex;
+        margin-bottom: 30px;
+        padding: 15px;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    
     </style>
 """, unsafe_allow_html=True)
 
