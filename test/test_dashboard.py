@@ -87,3 +87,8 @@ def test_empty_movie_data():
     with patch("main.st.selectbox", return_value="Inception"):
         main_dashboard(empty_movie_data, mock_credits_data)
         assert st.write.called_with("No movies available.")
+
+def test_movie_poster_display(mock_movies_data, mock_credits_data):
+    with patch("main.st.selectbox", return_value="Inception"):
+        main_dashboard(mock_movies_data, mock_credits_data)
+        assert st.image.called, "Movie poster is not displayed"
