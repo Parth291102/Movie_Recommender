@@ -59,3 +59,10 @@ def test_like_movie_from_csv():
         movie_title = movie_data.iloc[0]["title"]  
         update_feedback(movie_title, "like")
         assert st.session_state["feedback"][movie_title] == "like"        
+
+def test_like_movie_from_csv():
+    with patch("main.st.session_state", {"feedback": {}}):
+        movie_data = pd.read_csv("tmdb_5000_movies.csv")  # Load CSV data
+        movie_title = movie_data.iloc[0]["title"]  # Assuming the first movie is used
+        update_feedback(movie_title, "like")
+        assert st.session_state["feedback"][movie_title] == "like"
