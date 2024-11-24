@@ -94,3 +94,8 @@ def test_load_movies():
         movies = load_movies("tmdb_5000_movies.csv")
         assert len(movies) == 2
         assert movies[0]["title"] == "Movie A"
+
+def test_load_empty_movie_dataset():
+    with patch("builtins.open", mock_open(read_data="")):
+        movies = load_movies("tmdb_5000_movies.csv")
+        assert movies == []        
