@@ -119,4 +119,9 @@ def test_trending_top_10_with_less_movies():
 def test_load_credits_file_not_found(mocker):
     mocker.patch("builtins.open", side_effect=FileNotFoundError)
     with pytest.raises(FileNotFoundError):
-        load_credits("tmdb_5000_credits.csv")    
+        load_credits("tmdb_5000_credits.csv")   
+
+def test_movies_with_missing_release_date():
+    mock_movies = pd.DataFrame({"movie_id": [1, 2], "title": ["Movie A", "Movie B"], "release_date": [None, "2024-02-01"]})
+    processed_movies = preprocess_movie_data(mock_movies)
+    assert processed_movies["release_date"].isnull().sum() == 1         
