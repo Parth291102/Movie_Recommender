@@ -22,6 +22,16 @@ import time
 st.set_page_config(layout="wide")
 displayed = []
 
+
+
+st.markdown("""
+    <style>
+    .white-font {
+        color: white !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 if 'movie_number' not in st.session_state:
     st.session_state['movie_number'] = 0
 
