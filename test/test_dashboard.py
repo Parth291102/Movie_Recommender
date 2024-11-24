@@ -76,3 +76,8 @@ def test_next_page():
 def test_data_loading(mock_movies_data, mock_credits_data):
     assert not mock_movies_data.empty, "Movies data is empty"
     assert not mock_credits_data.empty, "Credits data is empty"
+
+def test_movie_search_functionality(mock_movies_data, mock_credits_data):
+    with patch("main.st.selectbox", return_value="The Matrix"):
+        main_dashboard(mock_movies_data, mock_credits_data)
+        assert st.session_state["selected_movie_name"] == "The Matrix"
