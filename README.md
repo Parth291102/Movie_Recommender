@@ -148,8 +148,9 @@ coverage report
 ---
 
 ## Usage
-We have tried to make this application (bot) as easy as possible. You can use this bot to manage and track you daily expenses and not worry about loosing track of your expenses. As we also have given in a functionality of graphing and plotting and history of expenses, it becomes easy for the user to track expenses.
-To make your experience even better, we have added User Tutorials for all the basic operations you can perform with DollarBot!!
+We’ve designed this movie recommender system to be as user-friendly as possible. You can easily explore and discover movies based on your preferences, making movie selection effortless. With the added functionality of personalized recommendations, rating history, and movie tracking, you can keep track of all the films you’ve watched and plan your next binge without losing track. Plus, with the integrated API's you can watch the trailers of the recommended movies directly on Youtube. Enjoy an intuitive, seamless experience as you discover your next favorite movie!
+
+To make your experience even better, we have added User Tutorials for all the basic operations you can perform with Movie Recomender!!
 Here you go:
 - [Learn to Sign Up!!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/SignUp.md)
 - [Learn to Log In!!](https://github.com/Parth291102/Movie_Recommender/blob/Version_2.0/Tutorials/Login.md)
