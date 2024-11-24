@@ -1,12 +1,3 @@
-'''MIT License
-
-Copyright (c) 2023 Parth Parikh, Mrudani Hada and Jamnesh Patel
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.'''
 import streamlit as st
 import streamlit_option_menu
 from streamlit_extras.stoggle import stoggle
@@ -17,10 +8,14 @@ import hashlib
 import pandas as pd
 import random
 import time
+import base64
+
 
 # Setting the wide mode as default
 st.set_page_config(layout="wide")
 displayed = []
+
+
 
 
 
@@ -29,7 +24,6 @@ st.markdown("""
     .white-font {
         color: white !important;
     }
-
     .red-font {
         color: #ff3366 !important;
         text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
@@ -41,7 +35,6 @@ st.markdown("""
         border-radius: 10px;
         transition: background-color 0.3s ease;
     }
-
     .movie-container:hover {
         background-color: rgba(255,255,255,0.05);
     }
@@ -58,7 +51,6 @@ st.markdown("""
         transform: scale(1.05);
         box-shadow: 0 8px 16px rgba(0,0,0,0.3);
     }
-
     .info-container {
         flex-grow: 1;
     }
@@ -103,7 +95,6 @@ st.markdown("""
     .poster-link:hover::after {
         opacity: 1;
     }
-
     .trailer-button {
         width: 100%;
         margin-top: 10px;
@@ -122,9 +113,10 @@ st.markdown("""
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     }
-
     </style>
 """, unsafe_allow_html=True)
+
+
 
 if 'movie_number' not in st.session_state:
     st.session_state['movie_number'] = 0
@@ -171,12 +163,15 @@ if 'username' not in st.session_state:
 
 # Authentication Pages
 def login_page():
+
     st.title("Welcome to Movie Recommender 🎥")
+
 
     tab1, tab2 = st.tabs(["Login", "Signup"])
 
     # Login Section
     with tab1:
+        # Style "Login" in white using custom HTML inside the tab
         st.subheader("Login")
         username = st.text_input("Username")
         password = st.text_input("Password", type="password")
@@ -191,6 +186,7 @@ def login_page():
 
     # Signup Section
     with tab2:
+         # Style "Signup" in white using custom HTML inside the tab
         st.subheader("Signup")
         new_username = st.text_input("Choose a Username")
         email = st.text_input("Email ID")
@@ -249,7 +245,7 @@ def main_dashboard(new_df, movies):
 
     def recommend_display():
 
-        st.title('Movie Recommender System')
+        st.title("Movie Recommender System")
 
         selected_movie_name = st.selectbox(
             'Select a Movie...', new_df['title'].values
@@ -321,6 +317,7 @@ def main_dashboard(new_df, movies):
 
             st.button(f"👍 {rec_movies[0]}", on_click=update_feedback, args=(rec_movies[0], "like"), key=f"like_{rec_movies[0]}")
             st.button(f"👎 {rec_movies[0]}", on_click=update_feedback, args=(rec_movies[0], "dislike"), key=f"dislike_{rec_movies[0]}")    
+           
 
         with col2:
             poster_url = preprocess.fetch_posters(rec_movies[1])
@@ -344,6 +341,7 @@ def main_dashboard(new_df, movies):
             
             st.button(f"👍 {rec_movies[1]}", on_click=update_feedback, args=(rec_movies[1], "like"), key=f"like_{rec_movies[1]}")
             st.button(f"👎 {rec_movies[1]}", on_click=update_feedback, args=(rec_movies[1], "dislike"), key=f"dislike_{rec_movies[1]}")
+
 
         with col3:
             poster_url = preprocess.fetch_posters(rec_movies[2])
@@ -421,7 +419,7 @@ def main_dashboard(new_df, movies):
                     st.write(f"- {rec}")
     
     def display_trending_top_10():
-        st.title("Trending Top 10 Movies This Week 🎬")
+        st.markdown("<h1>Trending Top 10 Movies This Week 🎬 </h1>", unsafe_allow_html=True)
 
         # Seed based on current week
         week_number = pd.Timestamp.now().week
@@ -459,6 +457,8 @@ def main_dashboard(new_df, movies):
                 </div>
             </div>
         """, unsafe_allow_html=True)
+
+            
 
             # Add a divider
             st.markdown("---")
