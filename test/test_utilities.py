@@ -124,4 +124,9 @@ def test_load_credits_file_not_found(mocker):
 def test_movies_with_missing_release_date():
     mock_movies = pd.DataFrame({"movie_id": [1, 2], "title": ["Movie A", "Movie B"], "release_date": [None, "2024-02-01"]})
     processed_movies = preprocess_movie_data(mock_movies)
-    assert processed_movies["release_date"].isnull().sum() == 1         
+    assert processed_movies["release_date"].isnull().sum() == 1 
+
+def test_movie_data_consistency():
+    mock_movies = pd.DataFrame({"movie_id": [1, 2], "title": ["Movie A", "Movie B"], "release_date": ["2024-01-01", "2024-02-01"]})
+    result = get_trending_top_10(mock_movies)
+    assert all(movie["title"] in mock_movies["title"].values for movie in result)            
