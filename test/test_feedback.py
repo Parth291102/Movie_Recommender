@@ -45,3 +45,10 @@ def test_update_feedback():
     st.session_state["feedback"] = {}
     update_feedback("Sample Movie", "like")
     assert st.session_state["feedback"]["Sample Movie"] == "like"
+
+def test_dislike_movie_from_csv():
+    with patch("main.st.session_state", {"feedback": {}}):
+        movie_data = pd.read_csv("tmdb_5000_movies.csv")
+        movie_title = movie_data.iloc[1]["title"]  # Second movie in the dataset
+        update_feedback(movie_title, "dislike")
+        assert st.session_state["feedback"][movie_title] == "dislike"
