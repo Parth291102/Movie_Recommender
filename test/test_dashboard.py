@@ -98,3 +98,9 @@ def test_movie_data_retrieval(mock_movies_data, mock_credits_data):
         main_dashboard(mock_movies_data, mock_credits_data)
         assert "Inception" in st.write.call_args[0][0]
         assert "Sci-Fi" in st.write.call_args[0][0]
+
+def test_empty_feedback_data(mock_movies_data, mock_credits_data):
+    with patch("main.st.selectbox", return_value="Inception"):
+        main_dashboard(mock_movies_data, mock_credits_data)
+        st.session_state["feedback"] = {}
+        assert "No feedback available." in st.write.call_args[0][0]
