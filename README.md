@@ -82,7 +82,7 @@ We've elevated the UI/UX by transitioning from Flask to Streamlit for a more sea
 ---
 
 ## Demo
-[![Link to Demo](https://github.com/user-attachments/assets/9f0facb6-bf24-4288-9117-f2ceab69e148)](https://drive.google.com/file/d/1_EkBOV__bC8n0r8TRxF73vQg_7AMzNDZ/view?usp=drive_link)
+[![Link to Demo](https://github.com/user-attachments/assets/9f0facb6-bf24-4288-9117-f2ceab69e148)](https://drive.google.com/file/d/1U1ZCsC8gi3oMgrA73Jv_PUVSWXKbDV5E/view?usp=sharing)
 
 ---
 
