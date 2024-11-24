@@ -66,3 +66,9 @@ def test_like_movie_from_csv():
         movie_title = movie_data.iloc[0]["title"]  # Assuming the first movie is used
         update_feedback(movie_title, "like")
         assert st.session_state["feedback"][movie_title] == "like"
+
+def test_empty_movie_title():
+    with patch("main.st.session_state", {"feedback": {}}):
+        update_feedback("", "like")
+        assert "" not in st.session_state["feedback"]
+
